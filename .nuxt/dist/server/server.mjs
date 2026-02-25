@@ -1,0 +1,1 @@
+export { default } from "file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@nuxt/vite-builder/dist/vite-node-entry.mjs"
