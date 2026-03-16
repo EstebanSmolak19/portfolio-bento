@@ -1,1 +1,103 @@
 @import "tailwindcss";
+
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --background-dark: #0a0b0f;
+    --card-dark: #1a1d24;
+    --text-primary: #c2c2c2;
+    --text-secondary: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: dark;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    background:
+            linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+            linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+            radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 0% 100%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+            linear-gradient(180deg, var(--background-dark) 0%, #070709 100%);
+    background-size:
+            30px 30px,
+            30px 30px,
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            100% 100%;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+            repeating-linear-gradient(
+                    120deg,
+                    rgba(99, 102, 241, 0.03) 0%,
+                    transparent 2px,
+                    transparent 4px,
+                    rgba(79, 70, 229, 0.03) 6px
+            ),
+            repeating-linear-gradient(
+                    -120deg,
+                    rgba(99, 102, 241, 0.02) 0%,
+                    transparent 2px,
+                    transparent 4px,
+                    rgba(79, 70, 229, 0.02) 6px
+            ),
+            radial-gradient(2px 2px at 50% 50%, rgba(99, 102, 241, 0.05) 50%, transparent 50%);
+    background-size: 60px 60px, 60px 60px, 30px 30px;
+    pointer-events: none;
+    animation: backgroundShift 30s linear infinite;
+    z-index: 0;
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 60px 60px, -60px -60px, 30px 30px;
+    }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+            radial-gradient(1px 1px at 40% 40%, rgba(255, 255, 255, 0.05) 50%, transparent 50%),
+            radial-gradient(1px 1px at 60% 60%, rgba(255, 255, 255, 0.05) 50%, transparent 50%);
+    background-size: 40px 40px;
+    animation: starTwinkle 4s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}
