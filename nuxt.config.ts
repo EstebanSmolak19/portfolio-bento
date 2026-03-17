@@ -11,6 +11,11 @@ export default defineNuxtConfig({
     ]
   },
 
+  runtimeConfig: {
+    supabaseUrl: process.env.VITE_SUPABASE_URL,
+    supabaseKey: process.env.VITE_SUPABASE_ANON_KEY,
+  },
+
   modules: [
     '@primevue/nuxt-module'
   ],

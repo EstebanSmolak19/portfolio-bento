@@ -125,6 +125,7 @@ declare global {
   const useRuntimeConfig: typeof import('../../node_modules/nitropack/dist/runtime/internal/config').useRuntimeConfig
   const useSession: typeof import('../../node_modules/h3').useSession
   const useStorage: typeof import('../../node_modules/nitropack/dist/runtime/internal/storage').useStorage
+  const useSupabase: typeof import('../../server/utils/useSupabase').useSupabase
   const writeEarlyHints: typeof import('../../node_modules/h3').writeEarlyHints
 }
 // for type re-export
@@ -145,5 +146,6 @@ export { getRouteRules } from 'nitropack/runtime/internal/route-rules';
 export { useEvent } from 'nitropack/runtime/internal/context';
 export { defineTask, runTask } from 'nitropack/runtime/internal/task';
 export { defineNitroErrorHandler } from 'nitropack/runtime/internal/error/utils';
-export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsURL } from '/Users/estebansmolak/Projets/portfolio-bento/node_modules/@nuxt/nitro-server/dist/runtime/utils/paths';
-export { defineAppConfig } from '/Users/estebansmolak/Projets/portfolio-bento/node_modules/@nuxt/nitro-server/dist/runtime/utils/config';
+export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsURL } from 'C:/Users/StageDev/Documents/portfolio-bento/node_modules/@nuxt/nitro-server/dist/runtime/utils/paths';
+export { defineAppConfig } from 'C:/Users/StageDev/Documents/portfolio-bento/node_modules/@nuxt/nitro-server/dist/runtime/utils/config';
+export { useSupabase } from 'C:/Users/StageDev/Documents/portfolio-bento/server/utils/useSupabase';

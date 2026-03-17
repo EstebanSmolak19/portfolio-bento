@@ -10,6 +10,10 @@ import { RuntimeConfig as UserRuntimeConfig, PublicRuntimeConfig as UserPublicRu
       cdnURL: string,
    },
 
+   supabaseUrl: string,
+
+   supabaseKey: string,
+
    nitro: {
       envPrefix: string,
    },

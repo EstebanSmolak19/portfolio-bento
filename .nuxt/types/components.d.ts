@@ -16,7 +16,10 @@ type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {},
 interface _GlobalComponents {
   Footer: typeof import("../../app/components/Footer.vue")['default']
   Header: typeof import("../../app/components/Header.vue")['default']
+  UIAppCursor: typeof import("../../app/components/UI/AppCursor.vue")['default']
   UICard: typeof import("../../app/components/UI/Card.vue")['default']
+  UIDiviser: typeof import("../../app/components/UI/Diviser.vue")['default']
+  UISplashScreen: typeof import("../../app/components/UI/SplashScreen.vue")['default']
   NuxtWelcome: typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
   NuxtLayout: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
   NuxtErrorBoundary: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -163,7 +166,10 @@ interface _GlobalComponents {
   NuxtIsland: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-island")['default']
   LazyFooter: LazyComponent<typeof import("../../app/components/Footer.vue")['default']>
   LazyHeader: LazyComponent<typeof import("../../app/components/Header.vue")['default']>
+  LazyUIAppCursor: LazyComponent<typeof import("../../app/components/UI/AppCursor.vue")['default']>
   LazyUICard: LazyComponent<typeof import("../../app/components/UI/Card.vue")['default']>
+  LazyUIDiviser: LazyComponent<typeof import("../../app/components/UI/Diviser.vue")['default']>
+  LazyUISplashScreen: LazyComponent<typeof import("../../app/components/UI/SplashScreen.vue")['default']>
   LazyNuxtWelcome: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
   LazyNuxtLayout: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
   LazyNuxtErrorBoundary: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

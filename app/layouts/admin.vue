@@ -54,6 +54,20 @@
       </nav>
 
       <div class="sidebar-footer">
+        <!-- Toggle theme -->
+        <button class="theme-toggle" @click="toggleTheme" :title="theme === 'dark' ? 'Passer en clair' : 'Passer en sombre'">
+          <!-- Sun (light mode) -->
+          <svg v-if="theme === 'dark'" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.75 2.75l1.06 1.06M10.19 10.19l1.06 1.06M2.75 11.25l1.06-1.06M10.19 3.81l1.06-1.06" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <!-- Moon (dark mode) -->
+          <svg v-else width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M12 8.5A5.5 5.5 0 0 1 5.5 2a5.5 5.5 0 1 0 6.5 6.5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {{ theme === 'dark' ? 'Mode clair' : 'Mode sombre' }}
+        </button>
+
         <div class="user">
           <div class="brand-avatar" style="width:26px;height:26px;font-size:8px">ES</div>
           <div class="user-info">
@@ -76,45 +90,33 @@
   </div>
 </template>
 
-<style scoped>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; }
-body {
-  background: #0f1117;
-  color: #cbd5e1;
-  font-family: 'DM Sans', 'Geist', ui-sans-serif, system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-}
-</style>
+<script setup lang="ts">
+import { useTheme } from '~/hooks/useTheme';
+
+const { theme, toggleTheme } = useTheme()
+</script>
 
 <style scoped>
-/* ── Shell ────────────────────────────────── */
 .shell {
-  display: flex;
-  width: 100vw;
-  height: 100dvh;
-  overflow: hidden;
-  background: #0f1117;
+  display: flex; width: 100vw; height: 100dvh; overflow: hidden;
+  position: relative; z-index: 1;
+  isolation: isolate;
 }
 
-/* ── Sidebar ────────────────────────────────── */
+/* Sidebar */
 .sidebar {
-  width: 220px;
-  min-width: 220px;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  background: rgba(17, 24, 39, 0.95);
-  border-right: 1px solid rgba(99, 102, 241, 0.12);
+  width: 220px; min-width: 220px; height: 100dvh;
+  display: flex; flex-direction: column;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-surface);
   backdrop-filter: blur(12px);
+  transition: background 0.2s, border-color 0.2s;
 }
 
-/* Brand */
 .brand {
   display: flex; align-items: center; gap: 10px;
   padding: 18px 16px 16px;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+  border-bottom: 1px solid var(--border-surface);
   flex-shrink: 0;
 }
 .brand-avatar {
@@ -125,10 +127,9 @@ body {
   font-size: 9px; font-weight: 800; color: #fff;
   letter-spacing: 0.04em; flex-shrink: 0;
 }
-.brand-name { font-size: 13px; font-weight: 600; color: #e2e8f0; line-height: 1; }
-.brand-sub  { font-size: 10px; color: #475569; margin-top: 2px; letter-spacing: 0.04em; }
+.brand-name { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1; }
+.brand-sub  { font-size: 10px; color: var(--text-muted); margin-top: 2px; letter-spacing: 0.04em; }
 
-/* Nav */
 .nav {
   flex: 1; display: flex; flex-direction: column; gap: 1px;
   padding: 12px 10px; overflow-y: auto;
@@ -136,55 +137,64 @@ body {
 .nav-section {
   font-size: 10px; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.12em;
-  color: #334155; padding: 0 6px; margin-bottom: 4px;
+  color: var(--text-faint); padding: 0 6px; margin-bottom: 4px;
 }
 .nav-item {
   display: flex; align-items: center; gap: 9px;
   padding: 7px 10px; border-radius: 7px;
-  font-size: 13px; font-weight: 500; color: #64748b;
+  font-size: 13px; font-weight: 500; color: var(--text-nav);
   text-decoration: none; transition: all 0.15s;
 }
-.nav-item:hover { background: rgba(99,102,241,0.08); color: #94a3b8; }
+.nav-item:hover { background: var(--bg-nav-hover); color: var(--text-secondary); }
 .nav-active {
-  background: rgba(99,102,241,0.12) !important;
-  color: #a5b4fc !important;
+  background: var(--bg-nav-active) !important;
+  color: var(--text-nav-active) !important;
   font-weight: 600;
 }
 .nav-badge {
-  margin-left: auto;
-  font-size: 10px; font-weight: 600;
+  margin-left: auto; font-size: 10px; font-weight: 600;
   color: #6366f1; background: rgba(99,102,241,0.12);
   padding: 1px 6px; border-radius: 4px;
 }
 
-/* Footer */
 .sidebar-footer {
   padding: 10px 10px 16px;
-  border-top: 1px solid rgba(99,102,241,0.1);
+  border-top: 1px solid var(--border-surface);
   flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 6px;
 }
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; padding: 7px 10px; border-radius: 7px;
+  background: none; border: none; cursor: pointer;
+  font-size: 12px; color: var(--text-muted);
+  transition: all 0.15s;
+}
+.theme-toggle:hover { background: var(--bg-nav-hover); color: var(--text-secondary); }
+
 .user {
   display: flex; align-items: center; gap: 9px;
   padding: 6px 6px; border-radius: 7px;
 }
 .user-info { flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.user-name { font-size: 12px; font-weight: 500; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.user-role { font-size: 10px; color: #334155; }
+.user-name { font-size: 12px; font-weight: 500; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-role { font-size: 10px; color: var(--text-faint); }
 .logout {
   background: none; border: none; cursor: pointer;
-  color: #334155; padding: 4px; border-radius: 5px;
+  color: var(--text-faint); padding: 4px; border-radius: 5px;
   display: flex; align-items: center; flex-shrink: 0;
   transition: all 0.15s;
 }
 .logout:hover { color: #f87171; background: rgba(248,113,113,0.08); }
 
-/* ── Main ────────────────────────────────── */
+/* Main */
 .main {
   flex: 1; height: 100dvh; overflow-y: auto;
-  background: #0f1117;
   scrollbar-width: thin;
-  scrollbar-color: rgba(99,102,241,0.15) transparent;
+  scrollbar-color: var(--scrollbar) transparent;
 }
 .main::-webkit-scrollbar { width: 4px; }
-.main::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.15); border-radius: 4px; }
+.main::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 4px; }
 </style>
