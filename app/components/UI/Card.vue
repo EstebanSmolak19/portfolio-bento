@@ -68,18 +68,48 @@ const cardBg = computed(() => {
 const borderColor = computed(() => a.value.border)
 const glowColor   = computed(() => a.value.glow)
 const headerBg    = computed(() => a.value.header)
+const spotColor   = computed(() => `rgba(${a.value.color}, 0.09)`)
+
+const cardRef = ref<HTMLElement | null>(null)
+
+function onMouseMove(e: MouseEvent) {
+  const el = cardRef.value
+  if (!el) return
+  const r  = el.getBoundingClientRect()
+  const x  = e.clientX - r.left
+  const y  = e.clientY - r.top
+  const cx = r.width  / 2
+  const cy = r.height / 2
+  const rotX = ((y - cy) / cy) * -6
+  const rotY = ((x - cx) / cx) *  6
+  el.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`
+  el.style.setProperty('--mx', `${((x / r.width)  * 100).toFixed(1)}%`)
+  el.style.setProperty('--my', `${((y / r.height) * 100).toFixed(1)}%`)
+}
+
+function onMouseLeave() {
+  const el = cardRef.value
+  if (!el) return
+  el.style.transform = ''
+}
 </script>
 
 <template>
   <div
-    class="card-root rounded-2xl w-full h-full flex flex-col border backdrop-blur-xl transition-all duration-300 relative overflow-hidden"
+    ref="cardRef"
+    class="card-root rounded-2xl w-full h-full flex flex-col border backdrop-blur-xl relative overflow-hidden"
     :class="{ 'card-neon': neon, 'card-picture-root': picture }"
+    @mousemove="onMouseMove"
+    @mouseleave="onMouseLeave"
   >
-    <!-- Shine overlay -->
     <div class="card-shine" />
+    <div class="card-spotlight" />
 
     <template v-if="label">
-      <div class="card-header px-4 py-2.5 border-b text-sm font-medium text-center" style="color: var(--text-primary)">
+      <div
+        class="card-header px-4 py-2.5 border-b text-sm font-medium text-center"
+        style="color: var(--text-primary)"
+      >
         {{ label }}
       </div>
     </template>
@@ -89,7 +119,11 @@ const headerBg    = computed(() => a.value.header)
       :style="{ color: 'var(--text-primary)' }"
       :class="{ 'overflow-hidden relative !p-0': picture }"
     >
-      <div v-if="picture && theme === 'light'" class="absolute inset-0 z-10 rounded-2xl pointer-events-none" style="background: rgba(250,248,244,0.25); backdrop-filter: saturate(0.8) brightness(1.05);" />
+      <div
+        v-if="picture && theme === 'light'"
+        class="absolute inset-0 z-10 rounded-2xl pointer-events-none"
+        style="background: rgba(250,248,244,0.25); backdrop-filter: saturate(0.8) brightness(1.05);"
+      />
       <slot />
     </div>
   </div>
@@ -100,15 +134,22 @@ const headerBg    = computed(() => a.value.header)
   background: v-bind(cardBg);
   border-color: v-bind(borderColor);
   box-shadow: 0 0 0 1px v-bind(borderColor), 0 4px 24px rgba(0,0,0,0.12);
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
 }
 
 .card-neon {
-  box-shadow: 0 0 20px -8px v-bind(glowColor), 0 0 0 1px v-bind(borderColor), 0 4px 24px rgba(0,0,0,0.15);
+  box-shadow:
+    0 0 20px -8px v-bind(glowColor),
+    0 0 0 1px v-bind(borderColor),
+    0 4px 24px rgba(0,0,0,0.15);
 }
 
 .card-root:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px -6px v-bind(glowColor), 0 0 0 1px v-bind(borderColor), 0 12px 40px rgba(0,0,0,0.2);
+  box-shadow:
+    0 0 30px -6px v-bind(glowColor),
+    0 0 0 1px v-bind(borderColor),
+    0 12px 40px rgba(0,0,0,0.22);
 }
 
 .card-header {
@@ -116,12 +157,32 @@ const headerBg    = computed(() => a.value.header)
   border-bottom-color: v-bind(borderColor);
 }
 
+/* shine statique coin haut-gauche */
 .card-shine {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%, transparent 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 50%);
   pointer-events: none;
   z-index: 1;
+}
+
+/* spotlight dynamique qui suit la souris */
+.card-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    200px circle at var(--mx, 50%) var(--my, 50%),
+    v-bind(spotColor) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card-root:hover .card-spotlight {
+  opacity: 1;
 }
 </style>

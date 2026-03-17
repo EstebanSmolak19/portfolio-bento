@@ -4,11 +4,15 @@
     <Card accent="violet" :neon="true" class="card-profile" :class="{ 'card-ready': ready }">
       <div class="profile-inner">
         <div class="flex flex-col items-center gap-1.5 pt-2">
-          <h1 class="font-bold tracking-tight text-[clamp(1.1rem,1.8vw,2rem)]" style="color:var(--text-primary)">Estéban SMOLAK</h1>
-          <p class="font-mono text-[clamp(0.62rem,0.85vw,0.82rem)] text-violet-400">BTS SIO option SLAM · promo 2026</p>
+          <h1 class="font-bold tracking-tight text-[clamp(1.1rem,1.8vw,2rem)]" style="color:var(--text-primary)">
+            Estéban SMOLAK
+          </h1>
+          <p class="font-mono text-[clamp(0.62rem,0.85vw,0.82rem)] text-violet-400">
+            BTS SIO option SLAM · promo 2026
+          </p>
         </div>
 
-        <Diviser type="glow"/>
+        <Diviser type="glow" />
 
         <p class="text-center text-[clamp(0.72rem,0.9vw,0.95rem)] leading-relaxed max-w-[36ch]" style="color:var(--text-secondary)">
           J'ai 19 ans, en 2ème année de BTS SIO option SLAM au
@@ -19,14 +23,16 @@
         <div class="flex-1" />
 
         <div class="flex flex-wrap gap-1.5 justify-center">
-          <span v-for="tech in ['Laravel', 'Nuxt', 'C#', 'React']" :key="tech"
-            class="text-[clamp(0.58rem,0.72vw,0.72rem)] px-2.5 py-1 rounded-full font-medium tracking-wide"
-            style="background:var(--bg-tag);border:0.5px solid var(--border-btn);color:var(--text-accent)">
+          <span
+            v-for="tech in ['Laravel', 'Nuxt', 'C#', 'React']"
+            :key="tech"
+            class="tech-tag"
+          >
             {{ tech }}
           </span>
         </div>
 
-        <Diviser type="glow"/>
+        <Diviser type="glow" />
 
         <div class="flex items-center justify-between w-full px-1 pb-1">
           <div class="flex items-center gap-1.5 text-[clamp(0.6rem,0.75vw,0.78rem)]" style="color:var(--text-muted)">
@@ -37,17 +43,23 @@
             Dijon, France
           </div>
           <div class="flex gap-1.5">
-            <a v-for="(btn, i) in socialLinks" :key="i" :href="btn.href" :target="btn.target" class="icon-btn group relative">
-              <Icon :icon="btn.icon" class="w-3.5 h-3.5" />
-              <span class="tooltip">{{ btn.label }}</span>
+            <a
+              v-for="(link, i) in socialLinks"
+              :key="i"
+              :href="link.href"
+              :target="link.target"
+              class="icon-btn group relative"
+            >
+              <Icon :icon="link.icon" class="w-3.5 h-3.5" />
+              <span class="tooltip">{{ link.label }}</span>
             </a>
           </div>
         </div>
       </div>
     </Card>
 
-    <Card label="Compétences" accent="purple" class="card-skills" :class="{ 'card-ready': ready }" />
-    <Card label="Dernier Projet" accent="cyan" class="card-project" :class="{ 'card-ready': ready }" />
+    <Card label="Compétences"  accent="purple" class="card-skills"    :class="{ 'card-ready': ready }" />
+    <Card label="Dernier Projet" accent="cyan" class="card-project"   :class="{ 'card-ready': ready }" />
 
     <Card :picture="true" backgroundColor="#4B1A9B" :neon="true" accent="purple" class="card-linkedin overflow-hidden" :class="{ 'card-ready': ready }">
       <a href="https://www.linkedin.com/in/esteban-smolak/" class="block w-full scale-[1.3] hover:translate-y-2 transition-transform duration-300">
@@ -68,7 +80,9 @@
     <Card label="Contact" accent="amber" class="card-contact" :class="{ 'card-ready': ready }">
       <div class="flex flex-col gap-2 p-3 items-start w-full">
         <p class="text-[11px] tracking-widest uppercase" style="color:var(--text-accent)">Email</p>
-        <p class="font-medium text-[clamp(0.72rem,0.9vw,0.9rem)]" style="color:var(--text-primary)">estebansmolak@gmail.com</p>
+        <p class="font-medium text-[clamp(0.72rem,0.9vw,0.9rem)]" style="color:var(--text-primary)">
+          estebansmolak@gmail.com
+        </p>
       </div>
     </Card>
 
@@ -82,8 +96,10 @@
       <a href="/veille" class="relative flex flex-col items-center justify-center h-full w-full p-4 gap-3">
         <div class="transition-transform duration-500 group-hover:scale-110">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
-            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20 4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20M4 9.1a10.9 10.9 0 0 1 10.9 10.9"
-              stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20 4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20M4 9.1a10.9 10.9 0 0 1 10.9 10.9"
+              stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            />
           </svg>
         </div>
         <div class="flex flex-col items-center gap-0.5 transition-opacity duration-300 group-hover:opacity-0">
@@ -112,13 +128,13 @@ const splashDone = inject<Ref<boolean>>('splashDone', ref(false))
 const ready = ref(false)
 
 watch(splashDone, (val) => {
-  if (val) ready.value = true
+  if (val) setTimeout(() => { ready.value = true }, 80)
 }, { immediate: true })
 
 const socialLinks = [
-  { href: '#',                                            target: '_self',  icon: 'mdi:file-document-outline', label: 'CV'       },
-  { href: 'https://github.com/EstebanSmolak19',           target: '_blank', icon: 'mdi:github',                label: 'GitHub'   },
-  { href: 'https://www.linkedin.com/in/esteban-smolak',  target: '_blank', icon: 'mdi:linkedin',              label: 'LinkedIn' },
+  { href: '#',                                           target: '_self',  icon: 'mdi:file-document-outline', label: 'CV'       },
+  { href: 'https://github.com/EstebanSmolak19',          target: '_blank', icon: 'mdi:github',                label: 'GitHub'   },
+  { href: 'https://www.linkedin.com/in/esteban-smolak', target: '_blank', icon: 'mdi:linkedin',              label: 'LinkedIn' },
 ]
 </script>
 
@@ -146,26 +162,23 @@ const socialLinks = [
 .card-formation { grid-area: formation; }
 .card-veille    { grid-area: veille; }
 
-/* ── État initial — toutes cachées ── */
-.card-profile   { opacity: 0; transform: translate(-30px, -25px) scale(0.95); }
-.card-skills    { opacity: 0; transform: translateY(-30px) scale(0.95); }
-.card-project   { opacity: 0; transform: translate(20px, -30px) scale(0.95); }
-.card-photo     { opacity: 0; transform: translate(30px, -25px) scale(0.95); }
-.card-linkedin  { opacity: 0; transform: translateX(30px) scale(0.95); }
-.card-exp       { opacity: 0; transform: translateY(20px) scale(0.93); }
-.card-contact   { opacity: 0; transform: translate(-30px, 25px) scale(0.95); }
-.card-formation { opacity: 0; transform: translateY(30px) scale(0.95); }
-.card-veille    { opacity: 0; transform: translate(30px, 25px) scale(0.95); }
+.card-profile   { opacity: 0; transform: translate(-40px, -20px) scale(0.93) rotate(-1deg); }
+.card-skills    { opacity: 0; transform: translateY(-35px) scale(0.94) rotate(0.5deg); }
+.card-project   { opacity: 0; transform: translate(30px, -35px) scale(0.93) rotate(1deg); }
+.card-photo     { opacity: 0; transform: translate(35px, -20px) scale(0.94) rotate(-0.5deg); }
+.card-linkedin  { opacity: 0; transform: translate(30px, 10px) scale(0.93); }
+.card-exp       { opacity: 0; transform: translateY(25px) scale(0.94); }
+.card-contact   { opacity: 0; transform: translate(-35px, 30px) scale(0.93) rotate(0.8deg); }
+.card-formation { opacity: 0; transform: translateY(35px) scale(0.94) rotate(-0.5deg); }
+.card-veille    { opacity: 0; transform: translate(30px, 30px) scale(0.93) rotate(1deg); }
 
-/* ── Transition commune ── */
 .card-profile, .card-skills, .card-project, .card-photo,
 .card-linkedin, .card-exp, .card-contact, .card-formation, .card-veille {
   transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ── État final ── */
 .card-profile.card-ready,
 .card-skills.card-ready,
 .card-project.card-ready,
@@ -176,21 +189,19 @@ const socialLinks = [
 .card-formation.card-ready,
 .card-veille.card-ready {
   opacity: 1;
-  transform: translate(0, 0) scale(1);
+  transform: translate(0, 0) scale(1) rotate(0deg);
 }
 
-/* ── Délais cascade ── */
-.card-profile.card-ready   { transition-delay: 0ms; }
-.card-photo.card-ready     { transition-delay: 80ms; }
-.card-skills.card-ready    { transition-delay: 160ms; }
-.card-project.card-ready   { transition-delay: 240ms; }
-.card-linkedin.card-ready  { transition-delay: 300ms; }
-.card-exp.card-ready       { transition-delay: 360ms; }
+.card-profile.card-ready   { transition-delay: 0ms;   }
+.card-photo.card-ready     { transition-delay: 70ms;  }
+.card-skills.card-ready    { transition-delay: 140ms; }
+.card-project.card-ready   { transition-delay: 210ms; }
+.card-linkedin.card-ready  { transition-delay: 280ms; }
+.card-exp.card-ready       { transition-delay: 350ms; }
 .card-contact.card-ready   { transition-delay: 420ms; }
-.card-formation.card-ready { transition-delay: 480ms; }
-.card-veille.card-ready    { transition-delay: 540ms; }
+.card-formation.card-ready { transition-delay: 490ms; }
+.card-veille.card-ready    { transition-delay: 560ms; }
 
-/* ── Tablet ── */
 @media (max-width: 1024px) {
   .bento-grid {
     height: auto;
@@ -204,15 +215,15 @@ const socialLinks = [
       "contact  contact  formation"
       "veille   veille   veille";
   }
-  .card-profile  { min-height: 280px; }
-  .card-photo    { min-height: 280px; }
-  .card-project  { min-height: 130px; }
-  .card-skills   { min-height: 260px; }
-  .card-exp      { min-height: 130px; }
-  .card-contact  { min-height: 130px; }
-  .card-linkedin { min-height: 130px; }
-  .card-formation{ min-height: 130px; }
-  .card-veille   { min-height: 130px; }
+  .card-profile   { min-height: 280px; }
+  .card-photo     { min-height: 280px; }
+  .card-project   { min-height: 130px; }
+  .card-skills    { min-height: 260px; }
+  .card-exp       { min-height: 130px; }
+  .card-contact   { min-height: 130px; }
+  .card-linkedin  { min-height: 130px; }
+  .card-formation { min-height: 130px; }
+  .card-veille    { min-height: 130px; }
 }
 
 /* ── Mobile ── */
@@ -235,7 +246,7 @@ const socialLinks = [
   .card-veille    { min-height: 130px; }
 }
 
-/* ── Profile ── */
+/* ── Profile inner ── */
 .profile-inner {
   display: flex; flex-direction: column; align-items: center;
   height: 100%; width: 100%;
@@ -243,24 +254,52 @@ const socialLinks = [
   gap: clamp(8px, 1.2vh, 14px);
 }
 
+/* ── Tech tags ── */
+.tech-tag {
+  font-size: clamp(0.58rem, 0.72vw, 0.72rem);
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  background: var(--bg-tag);
+  border: 0.5px solid var(--border-btn);
+  color: var(--text-accent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tech-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+/* ── Social icon buttons ── */
 .icon-btn {
   display: flex; align-items: center; justify-content: center;
   width: clamp(26px, 2.2vw, 34px); height: clamp(26px, 2.2vw, 34px);
   border-radius: 7px;
-  background: var(--bg-tag); border: 0.5px solid var(--border-muted);
-  color: var(--text-secondary); transition: all 0.25s;
+  background: var(--bg-tag);
+  border: 0.5px solid var(--border-muted);
+  color: var(--text-secondary);
+  transition: all 0.25s;
 }
-.icon-btn:hover { background: var(--bg-btn-primary); color: var(--text-accent); transform: translateY(-1px); }
+.icon-btn:hover {
+  background: var(--bg-btn-primary);
+  color: var(--text-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
 
+/* ── Tooltip ── */
 .tooltip {
   position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
   margin-bottom: 6px; padding: 3px 8px; font-size: 10px;
   background: var(--bg-modal); color: var(--text-primary);
   border: 0.5px solid var(--border-surface); border-radius: 5px;
-  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+  white-space: nowrap; opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
 }
 .icon-btn:hover .tooltip { opacity: 1; }
 
+/* ── Link ── */
 .link {
   color: var(--text-accent); font-weight: 600;
   text-decoration: none; position: relative;
@@ -275,12 +314,16 @@ const socialLinks = [
 }
 .link:hover::after { transform: scaleX(1); transform-origin: left; }
 
+/* ── Experience title ── */
 .experience-title {
   font-size: clamp(1.2rem, 2.2vw, 2.4rem);
   font-weight: 900; text-transform: uppercase; letter-spacing: 0.15rem;
   background: linear-gradient(90deg, #8b5cf6, #6366f1, #f59e0b);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  text-align: center; transition: transform 0.3s ease;
+  text-align: center; transition: transform 0.3s ease, filter 0.3s ease;
 }
-.experience-title:hover { transform: scale(1.04); }
+.experience-title:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
 </style>
