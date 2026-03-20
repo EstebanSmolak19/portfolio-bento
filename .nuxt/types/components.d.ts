@@ -20,6 +20,8 @@ interface _GlobalComponents {
   UICard: typeof import("../../app/components/UI/Card.vue")['default']
   UIDiviser: typeof import("../../app/components/UI/Diviser.vue")['default']
   UISplashScreen: typeof import("../../app/components/UI/SplashScreen.vue")['default']
+  AdminModal: typeof import("../../app/components/admin/AdminModal.vue")['default']
+  AdminTable: typeof import("../../app/components/admin/AdminTable.vue")['default']
   NuxtWelcome: typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
   NuxtLayout: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
   NuxtErrorBoundary: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -170,6 +172,8 @@ interface _GlobalComponents {
   LazyUICard: LazyComponent<typeof import("../../app/components/UI/Card.vue")['default']>
   LazyUIDiviser: LazyComponent<typeof import("../../app/components/UI/Diviser.vue")['default']>
   LazyUISplashScreen: LazyComponent<typeof import("../../app/components/UI/SplashScreen.vue")['default']>
+  LazyAdminModal: LazyComponent<typeof import("../../app/components/admin/AdminModal.vue")['default']>
+  LazyAdminTable: LazyComponent<typeof import("../../app/components/admin/AdminTable.vue")['default']>
   LazyNuxtWelcome: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
   LazyNuxtLayout: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
   LazyNuxtErrorBoundary: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

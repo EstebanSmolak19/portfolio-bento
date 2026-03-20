@@ -1,139 +1,140 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, createError, removeResponseHeader, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getResponseStatusText } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { escapeHtml } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@vue/shared/dist/shared.cjs.js';
-import { createClient } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@supabase/supabase-js/dist/index.mjs';
-import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL, decodePath, withLeadingSlash, withoutTrailingSlash } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/ufo/dist/index.mjs';
-import destr, { destr as destr$1 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/destr/dist/index.mjs';
-import { createHooks } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/hookable/dist/index.mjs';
-import { createFetch, Headers as Headers$1 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/ofetch/dist/node.mjs';
-import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/unstorage/drivers/fs.mjs';
-import { digest } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/ohash/dist/index.mjs';
-import { klona } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/scule/dist/index.mjs';
-import { getContext } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/unctx/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/radix3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, createError, removeResponseHeader, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getResponseStatusText } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/h3/dist/index.mjs';
+import { escapeHtml } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@vue/shared/dist/shared.cjs.js';
+import z from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/zod/index.js';
+import { createClient } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@supabase/supabase-js/dist/index.mjs';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL, decodePath, withLeadingSlash, withoutTrailingSlash } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/ufo/dist/index.mjs';
+import destr, { destr as destr$1 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/destr/dist/index.mjs';
+import { renderToString } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/vue/server-renderer/index.mjs';
+import { klona } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/scule/dist/index.mjs';
+import { createHead as createHead$1, propsToString, renderSSRHead } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/unhead/dist/server.mjs';
+import { stringify, uneval } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/devalue/index.js';
+import { isVNode, isRef, toValue } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/vue/index.mjs';
+import { createHooks } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/node-mock-http/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/unstorage/drivers/fs.mjs';
+import { digest } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/ohash/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/consola/dist/index.mjs';
-import { ErrorParser } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/youch-core/build/index.js';
-import { Youch } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/youch/build/index.js';
-import { SourceMapConsumer } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/source-map/source-map.js';
+import consola, { consola as consola$1 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/youch-core/build/index.js';
+import { Youch } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/source-map/source-map.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { stringify, uneval } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/devalue/index.js';
-import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/errx/dist/index.js';
-import { isVNode, isRef, toValue } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/vue/index.mjs';
-import BaseStyle from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primevue/core/base/style/index.mjs';
-import BaseComponentStyle from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primevue/core/basecomponent/style/index.mjs';
-import { style } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/autocomplete/index.mjs';
-import { isNotEmpty, isEmpty } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/utils/dist/object/index.mjs';
-import { style as style$1 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/cascadeselect/index.mjs';
-import { style as style$2 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/checkbox/index.mjs';
-import { style as style$3 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/checkboxgroup/index.mjs';
-import { style as style$4 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/colorpicker/index.mjs';
-import { style as style$5 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/datepicker/index.mjs';
-import { style as style$6 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/floatlabel/index.mjs';
-import { style as style$7 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/iconfield/index.mjs';
-import { style as style$8 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/iftalabel/index.mjs';
-import { style as style$9 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/inputchips/index.mjs';
-import { style as style$a } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/inputgroup/index.mjs';
-import { style as style$b } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/inputnumber/index.mjs';
-import { style as style$c } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/inputotp/index.mjs';
-import { style as style$d } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/inputtext/index.mjs';
-import { style as style$e } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/knob/index.mjs';
-import { style as style$f } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/listbox/index.mjs';
-import { style as style$g } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/multiselect/index.mjs';
-import { style as style$h } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/password/index.mjs';
-import { style as style$i } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/radiobutton/index.mjs';
-import { style as style$j } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/radiobuttongroup/index.mjs';
-import { style as style$k } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/rating/index.mjs';
-import { style as style$l } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/select/index.mjs';
-import { style as style$m } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/selectbutton/index.mjs';
-import { style as style$n } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/slider/index.mjs';
-import { style as style$o } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/textarea/index.mjs';
-import { style as style$p } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/togglebutton/index.mjs';
-import { style as style$q } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/toggleswitch/index.mjs';
-import { style as style$r } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/treeselect/index.mjs';
-import { style as style$s } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/button/index.mjs';
-import { style as style$t } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/buttongroup/index.mjs';
-import { style as style$u } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/speeddial/index.mjs';
-import { style as style$v } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/splitbutton/index.mjs';
-import { style as style$w } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/datatable/index.mjs';
-import { style as style$x } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/dataview/index.mjs';
-import { style as style$y } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/orderlist/index.mjs';
-import { style as style$z } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/organizationchart/index.mjs';
-import { style as style$A } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/paginator/index.mjs';
-import { style as style$B } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/picklist/index.mjs';
-import { style as style$C } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/tree/index.mjs';
-import { style as style$D } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/treetable/index.mjs';
-import { style as style$E } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/timeline/index.mjs';
-import { style as style$F } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/virtualscroller/index.mjs';
-import { style as style$G } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/accordion/index.mjs';
-import { style as style$H } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/card/index.mjs';
-import { style as style$I } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/divider/index.mjs';
-import { style as style$J } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/fieldset/index.mjs';
-import { style as style$K } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/panel/index.mjs';
-import { style as style$L } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/scrollpanel/index.mjs';
-import { style as style$M } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/splitter/index.mjs';
-import { style as style$N } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/stepper/index.mjs';
-import { style as style$O } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/tabview/index.mjs';
-import { style as style$P } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/tabs/index.mjs';
-import { style as style$Q } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/toolbar/index.mjs';
-import { style as style$R } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/confirmdialog/index.mjs';
-import { style as style$S } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/confirmpopup/index.mjs';
-import { style as style$T } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/dialog/index.mjs';
-import { style as style$U } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/drawer/index.mjs';
-import { style as style$V } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/popover/index.mjs';
-import { style as style$W } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/fileupload/index.mjs';
-import { style as style$X } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/breadcrumb/index.mjs';
-import { style as style$Y } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/contextmenu/index.mjs';
-import { style as style$Z } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/dock/index.mjs';
-import { style as style$_ } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/menu/index.mjs';
-import { style as style$$ } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/menubar/index.mjs';
-import { style as style$10 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/megamenu/index.mjs';
-import { style as style$11 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/panelmenu/index.mjs';
-import { style as style$12 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/steps/index.mjs';
-import { style as style$13 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/tabmenu/index.mjs';
-import { style as style$14 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/tieredmenu/index.mjs';
-import { style as style$15 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/message/index.mjs';
-import { style as style$16 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/inlinemessage/index.mjs';
-import { style as style$17 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/toast/index.mjs';
-import { style as style$18 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/carousel/index.mjs';
-import { style as style$19 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/galleria/index.mjs';
-import { style as style$1a } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/image/index.mjs';
-import { style as style$1b } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/imagecompare/index.mjs';
-import { style as style$1c } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/avatar/index.mjs';
-import { style as style$1d } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/badge/index.mjs';
-import { style as style$1e } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/blockui/index.mjs';
-import { style as style$1f } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/chip/index.mjs';
-import { style as style$1g } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/inplace/index.mjs';
-import { style as style$1h } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/metergroup/index.mjs';
-import { style as style$1i } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/overlaybadge/index.mjs';
-import { style as style$1j } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/scrolltop/index.mjs';
-import { style as style$1k } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/skeleton/index.mjs';
-import { style as style$1l } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/progressbar/index.mjs';
-import { style as style$1m } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/progressspinner/index.mjs';
-import { style as style$1n } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/tag/index.mjs';
-import { style as style$1o } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/terminal/index.mjs';
-import FormStyle from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primevue/forms/form/style/index.mjs';
-import FormFieldStyle from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primevue/forms/formfield/style/index.mjs';
-import { style as style$1p } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/tooltip/index.mjs';
-import { style as style$1q } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styles/dist/ripple/index.mjs';
-import { Theme } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/@primeuix/styled/dist/index.mjs';
+import { getContext } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/unctx/dist/index.mjs';
+import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/errx/dist/index.js';
+import BaseStyle from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primevue/core/base/style/index.mjs';
+import BaseComponentStyle from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primevue/core/basecomponent/style/index.mjs';
+import { style } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/autocomplete/index.mjs';
+import { isNotEmpty, isEmpty } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/utils/dist/object/index.mjs';
+import { style as style$1 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/cascadeselect/index.mjs';
+import { style as style$2 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/checkbox/index.mjs';
+import { style as style$3 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/checkboxgroup/index.mjs';
+import { style as style$4 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/colorpicker/index.mjs';
+import { style as style$5 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/datepicker/index.mjs';
+import { style as style$6 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/floatlabel/index.mjs';
+import { style as style$7 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/iconfield/index.mjs';
+import { style as style$8 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/iftalabel/index.mjs';
+import { style as style$9 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/inputchips/index.mjs';
+import { style as style$a } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/inputgroup/index.mjs';
+import { style as style$b } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/inputnumber/index.mjs';
+import { style as style$c } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/inputotp/index.mjs';
+import { style as style$d } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/inputtext/index.mjs';
+import { style as style$e } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/knob/index.mjs';
+import { style as style$f } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/listbox/index.mjs';
+import { style as style$g } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/multiselect/index.mjs';
+import { style as style$h } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/password/index.mjs';
+import { style as style$i } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/radiobutton/index.mjs';
+import { style as style$j } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/radiobuttongroup/index.mjs';
+import { style as style$k } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/rating/index.mjs';
+import { style as style$l } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/select/index.mjs';
+import { style as style$m } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/selectbutton/index.mjs';
+import { style as style$n } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/slider/index.mjs';
+import { style as style$o } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/textarea/index.mjs';
+import { style as style$p } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/togglebutton/index.mjs';
+import { style as style$q } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/toggleswitch/index.mjs';
+import { style as style$r } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/treeselect/index.mjs';
+import { style as style$s } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/button/index.mjs';
+import { style as style$t } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/buttongroup/index.mjs';
+import { style as style$u } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/speeddial/index.mjs';
+import { style as style$v } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/splitbutton/index.mjs';
+import { style as style$w } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/datatable/index.mjs';
+import { style as style$x } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/dataview/index.mjs';
+import { style as style$y } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/orderlist/index.mjs';
+import { style as style$z } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/organizationchart/index.mjs';
+import { style as style$A } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/paginator/index.mjs';
+import { style as style$B } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/picklist/index.mjs';
+import { style as style$C } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/tree/index.mjs';
+import { style as style$D } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/treetable/index.mjs';
+import { style as style$E } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/timeline/index.mjs';
+import { style as style$F } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/virtualscroller/index.mjs';
+import { style as style$G } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/accordion/index.mjs';
+import { style as style$H } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/card/index.mjs';
+import { style as style$I } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/divider/index.mjs';
+import { style as style$J } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/fieldset/index.mjs';
+import { style as style$K } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/panel/index.mjs';
+import { style as style$L } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/scrollpanel/index.mjs';
+import { style as style$M } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/splitter/index.mjs';
+import { style as style$N } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/stepper/index.mjs';
+import { style as style$O } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/tabview/index.mjs';
+import { style as style$P } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/tabs/index.mjs';
+import { style as style$Q } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/toolbar/index.mjs';
+import { style as style$R } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/confirmdialog/index.mjs';
+import { style as style$S } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/confirmpopup/index.mjs';
+import { style as style$T } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/dialog/index.mjs';
+import { style as style$U } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/drawer/index.mjs';
+import { style as style$V } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/popover/index.mjs';
+import { style as style$W } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/fileupload/index.mjs';
+import { style as style$X } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/breadcrumb/index.mjs';
+import { style as style$Y } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/contextmenu/index.mjs';
+import { style as style$Z } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/dock/index.mjs';
+import { style as style$_ } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/menu/index.mjs';
+import { style as style$$ } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/menubar/index.mjs';
+import { style as style$10 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/megamenu/index.mjs';
+import { style as style$11 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/panelmenu/index.mjs';
+import { style as style$12 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/steps/index.mjs';
+import { style as style$13 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/tabmenu/index.mjs';
+import { style as style$14 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/tieredmenu/index.mjs';
+import { style as style$15 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/message/index.mjs';
+import { style as style$16 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/inlinemessage/index.mjs';
+import { style as style$17 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/toast/index.mjs';
+import { style as style$18 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/carousel/index.mjs';
+import { style as style$19 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/galleria/index.mjs';
+import { style as style$1a } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/image/index.mjs';
+import { style as style$1b } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/imagecompare/index.mjs';
+import { style as style$1c } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/avatar/index.mjs';
+import { style as style$1d } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/badge/index.mjs';
+import { style as style$1e } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/blockui/index.mjs';
+import { style as style$1f } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/chip/index.mjs';
+import { style as style$1g } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/inplace/index.mjs';
+import { style as style$1h } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/metergroup/index.mjs';
+import { style as style$1i } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/overlaybadge/index.mjs';
+import { style as style$1j } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/scrolltop/index.mjs';
+import { style as style$1k } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/skeleton/index.mjs';
+import { style as style$1l } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/progressbar/index.mjs';
+import { style as style$1m } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/progressspinner/index.mjs';
+import { style as style$1n } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/tag/index.mjs';
+import { style as style$1o } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/terminal/index.mjs';
+import FormStyle from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primevue/forms/form/style/index.mjs';
+import FormFieldStyle from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primevue/forms/formfield/style/index.mjs';
+import { style as style$1p } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/tooltip/index.mjs';
+import { style as style$1q } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styles/dist/ripple/index.mjs';
+import { Theme } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/@primeuix/styled/dist/index.mjs';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname as dirname$1, resolve as resolve$1 } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/pathe/dist/index.mjs';
-import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/unhead/dist/server.mjs';
-import { renderToString } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/vue/server-renderer/index.mjs';
-import { walkResolver } from 'file:///Users/estebansmolak/Projets/portfolio-bento/node_modules/unhead/dist/utils.mjs';
+import { dirname as dirname$1, resolve as resolve$1 } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/pathe/dist/index.mjs';
+import { walkResolver } from 'file://C:/Users/StageDev/Documents/portfolio-bento/node_modules/unhead/dist/utils.mjs';
 
-const serverAssets = [{"baseName":"server","dir":"/Users/estebansmolak/Projets/portfolio-bento/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"C:/Users/StageDev/Documents/portfolio-bento/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -145,11 +146,11 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets$1);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/estebansmolak/Projets/portfolio-bento","watchOptions":{"ignored":[null]}}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/estebansmolak/Projets/portfolio-bento/server","watchOptions":{"ignored":[null]}}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/estebansmolak/Projets/portfolio-bento/.nuxt"}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/estebansmolak/Projets/portfolio-bento/.nuxt/cache"}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/estebansmolak/Projets/portfolio-bento/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/StageDev/Documents/portfolio-bento","watchOptions":{"ignored":[null]}}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/StageDev/Documents/portfolio-bento/server","watchOptions":{"ignored":[null]}}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/StageDev/Documents/portfolio-bento/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/StageDev/Documents/portfolio-bento/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"C:/Users/StageDev/Documents/portfolio-bento/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -7876,8 +7877,8 @@ const _inlineRuntimeConfig = {
       ]
     }
   },
-  "supabaseUrl": "",
-  "supabaseKey": ""
+  "supabaseUrl": "https://ouhyxfbwbcfmyjauvtll.supabase.co",
+  "supabaseKey": "sb_publishable_TyQLNXQfRRBU650LFmDfRQ_Ki-YcKow"
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -7921,11 +7922,6 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
     }
     return void 0;
   }
-});
-
-getContext("nitro-app", {
-  asyncContext: false,
-  AsyncLocalStorage: void 0
 });
 
 const config$1 = useRuntimeConfig();
@@ -9255,13 +9251,13 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _Qa9Cdbfrzz48b52D5vIG2YpVnlECcD_YgSjbQvVVSo = (function(nitro) {
+const _7U5vXCB7ruIvVK1CKbmzXybvu2lKTn71yzWyNiz4fRE = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
-const rootDir = "/Users/estebansmolak/Projets/portfolio-bento";
+const rootDir = "C:/Users/StageDev/Documents/portfolio-bento";
 
 const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
 
@@ -9290,7 +9286,7 @@ const asyncContext = getContext("nuxt-dev", {
 	asyncContext: true,
 	AsyncLocalStorage
 });
-const _hg6jyTRVDB6oY5MxrKnXk8SQvYpYEudT2BtrF6sVlA = (nitroApp) => {
+const _rAYF2BKJAK178F1kvzV8JsK0lsx5N7zVfKhA5Nz9yI = (nitroApp) => {
 	const handler = nitroApp.h3App.handler;
 	nitroApp.h3App.handler = (event) => {
 		return asyncContext.callAsync({
@@ -12530,7 +12526,7 @@ const themes =
 ].join('');
 
 const defineNitroPlugin = (def) => def;
-const _DVMrJSVAqFemvKnqFxPqR3Bgn1jkU6MXwrxVWcHNXo = defineNitroPlugin(async (nitroApp) => {
+const _PW1kmrCo6hnHHI5eynAa8YvKbn4o4IkcF9y7E_Tg_e4 = defineNitroPlugin(async (nitroApp) => {
   nitroApp.hooks.hook("render:html", (html) => {
     html.head.unshift(stylesToTop);
     html.head.push(styles$2);
@@ -12539,12 +12535,27 @@ const _DVMrJSVAqFemvKnqFxPqR3Bgn1jkU6MXwrxVWcHNXo = defineNitroPlugin(async (nit
 });
 
 const plugins = [
-  _Qa9Cdbfrzz48b52D5vIG2YpVnlECcD_YgSjbQvVVSo,
-_hg6jyTRVDB6oY5MxrKnXk8SQvYpYEudT2BtrF6sVlA,
-_DVMrJSVAqFemvKnqFxPqR3Bgn1jkU6MXwrxVWcHNXo
+  _7U5vXCB7ruIvVK1CKbmzXybvu2lKTn71yzWyNiz4fRE,
+_rAYF2BKJAK178F1kvzV8JsK0lsx5N7zVfKhA5Nz9yI,
+_PW1kmrCo6hnHHI5eynAa8YvKbn4o4IkcF9y7E_Tg_e4
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"810f2-Iu8Tf9OGM7aI26aHDnTX8J7NLBM\"",
+    "mtime": "2026-03-20T12:54:25.166Z",
+    "size": 528626,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"200649-H3u7fmxrqatMdxXNp7N593+YOD0\"",
+    "mtime": "2026-03-20T12:54:25.167Z",
+    "size": 2098761,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -12569,7 +12580,7 @@ function getAsset (id) {
 
 const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
 const EncodingMap = { gzip: ".gz", br: ".br" };
-const _C2dmPx = eventHandler((event) => {
+const _t6xcCd = eventHandler((event) => {
   if (event.method && !METHODS.has(event.method)) {
     return;
   }
@@ -12695,9 +12706,9 @@ function setSSRError(ssrContext, error) {
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
 // @ts-expect-error file will be produced after app build
-const getServerEntry = () => import('file:///Users/estebansmolak/Projets/portfolio-bento/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
+const getServerEntry = () => import('file://C:/Users/StageDev/Documents/portfolio-bento/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
 // @ts-expect-error file will be produced after app build
-const getClientManifest = () => import('file:///Users/estebansmolak/Projets/portfolio-bento/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('file://C:/Users/StageDev/Documents/portfolio-bento/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 // -- SSR Renderer --
 const getSSRRenderer = lazyCachedFunction(async () => {
 	// Load server bundle
@@ -12978,19 +12989,29 @@ async function getIslandContext(event) {
 	return ctx;
 }
 
-const _lazy_IBp_d8 = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_HQYM2G = () => Promise.resolve().then(function () { return index_get$1; });
-const _lazy_F3EENZ = () => Promise.resolve().then(function () { return index_post$1; });
-const _lazy_e5ENUw = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_Kamo4u = () => Promise.resolve().then(function () { return _id__get$5; });
+const _lazy_5PZv72 = () => Promise.resolve().then(function () { return index_get$5; });
+const _lazy_1BVuig = () => Promise.resolve().then(function () { return index_post$3; });
+const _lazy_o_eBma = () => Promise.resolve().then(function () { return _id__get$3; });
+const _lazy_v3XvYA = () => Promise.resolve().then(function () { return index_get$3; });
+const _lazy_vquJ28 = () => Promise.resolve().then(function () { return _id__get$1; });
+const _lazy_TQWdpx = () => Promise.resolve().then(function () { return index_get$1; });
+const _lazy_W7P8ps = () => Promise.resolve().then(function () { return index_post$1; });
+const _lazy_I3xngf = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '', handler: _C2dmPx, lazy: false, middleware: true, method: undefined },
-  { route: '/api/projects/:id', handler: _lazy_IBp_d8, lazy: true, middleware: false, method: "get" },
-  { route: '/api/projects', handler: _lazy_HQYM2G, lazy: true, middleware: false, method: "get" },
-  { route: '/api/projects', handler: _lazy_F3EENZ, lazy: true, middleware: false, method: "post" },
-  { route: '/__nuxt_error', handler: _lazy_e5ENUw, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _t6xcCd, lazy: false, middleware: true, method: undefined },
+  { route: '/api/articles/:id', handler: _lazy_Kamo4u, lazy: true, middleware: false, method: "get" },
+  { route: '/api/articles', handler: _lazy_5PZv72, lazy: true, middleware: false, method: "get" },
+  { route: '/api/articles', handler: _lazy_1BVuig, lazy: true, middleware: false, method: "post" },
+  { route: '/api/categories/:id', handler: _lazy_o_eBma, lazy: true, middleware: false, method: "get" },
+  { route: '/api/categories', handler: _lazy_v3XvYA, lazy: true, middleware: false, method: "get" },
+  { route: '/api/projects/:id', handler: _lazy_vquJ28, lazy: true, middleware: false, method: "get" },
+  { route: '/api/projects', handler: _lazy_TQWdpx, lazy: true, middleware: false, method: "get" },
+  { route: '/api/projects', handler: _lazy_W7P8ps, lazy: true, middleware: false, method: "post" },
+  { route: '/__nuxt_error', handler: _lazy_I3xngf, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_e5ENUw, lazy: true, middleware: false, method: undefined }
+  { route: '/**', handler: _lazy_I3xngf, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -13254,6 +13275,107 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
+class ArticleService {
+  async getAllAsync(limit) {
+    const query = useSupabase().from("articles").select("*").order("id", { ascending: false });
+    if (limit) query.limit(limit);
+    const { data, error } = await query;
+    if (error) throw createError({ statusCode: 500, message: error.message });
+    return data;
+  }
+  async getAsync(article_id) {
+    const { data, error } = await useSupabase().from("articles").select("*").eq("id", article_id).single();
+    if (error) throw createError({ statusCode: 404, message: "article introuvable" });
+    return data;
+  }
+  async createAsync(dto) {
+    const { data, error } = await useSupabase().from("articles").insert(dto).select().single();
+    if (error) throw createError({ statusCode: 500, message: error.message });
+    return data;
+  }
+}
+const articleService = new ArticleService();
+
+const _id__get$4 = defineEventHandler(async (event) => {
+  const id = Number(getRouterParam(event, "id"));
+  return articleService.getAsync(id);
+});
+
+const _id__get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$4 = defineEventHandler(async (event) => {
+  const { limit } = getQuery$1(event);
+  return articleService.getAllAsync(limit ? Number(limit) : void 0);
+});
+
+const index_get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const ArticleSchema = z.object({
+  title: z.string(),
+  summary: z.string(),
+  category: z.string(),
+  score: z.number(),
+  author: z.string(),
+  url: z.string().url(),
+  published_at: z.string()
+});
+
+const index_post$2 = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  const result = ArticleSchema.safeParse(body);
+  if (!result.success) {
+    throw createError({ statusCode: 422, message: "Donn\xE9e invalides" });
+  }
+  return articleService.createAsync(result.data);
+});
+
+const index_post$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+class CategorieService {
+  async getAllAsync(limit) {
+    const query = useSupabase().from("categories").select("*").order("id", { ascending: false });
+    if (limit) query.limit(limit);
+    const { data, error } = await query;
+    if (error) throw createError({ statusCode: 500, message: error.message });
+    return data;
+  }
+  async getAsync(categorie_id) {
+    const { data, error } = await useSupabase().from("categories").select("*").eq("id", categorie_id).single();
+    if (error) throw createError({ statusCode: 404, message: "Categorie introuvable" });
+    return data;
+  }
+}
+const categorieService = new CategorieService();
+
+const _id__get$2 = defineEventHandler(async (event) => {
+  const id = Number(getRouterParam(event, "id"));
+  return categorieService.getAsync(id);
+});
+
+const _id__get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$2 = defineEventHandler(async (event) => {
+  const { limit } = getQuery$1(event);
+  return categorieService.getAllAsync(limit ? Number(limit) : void 0);
+});
+
+const index_get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
 class ProjectService {
   async getAllAsync(limit) {
     const query = useSupabase().from("projects").select("*").order("id", { ascending: false });
@@ -13283,11 +13405,11 @@ class ProjectService {
     return data;
   }
 }
-const projectService = new ProjectService();
+const projectService$1 = new ProjectService();
 
 const _id__get = defineEventHandler(async (event) => {
   const id = Number(getRouterParam(event, "id"));
-  return projectService.getAsync(id);
+  return projectService$1.getAsync(id);
 });
 
 const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -13297,7 +13419,7 @@ const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
 
 const index_get = defineEventHandler(async (event) => {
   const { limit } = getQuery$1(event);
-  return projectService.getAllAsync(limit ? Number(limit) : void 0);
+  return projectService$1.getAllAsync(limit ? Number(limit) : void 0);
 });
 
 const index_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -13307,7 +13429,7 @@ const index_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
 
 const index_post = defineEventHandler(async (event) => {
   const body = await readBody(event);
-  return projectService.createProject(body.link);
+  return projectService$1.createProject(body.link);
 });
 
 const index_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
