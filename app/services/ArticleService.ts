@@ -1,4 +1,5 @@
 import type { Article } from "~/types/Article";
+import type { CreateArticleDto } from "~/types/DTO/CreateArticleDto";
 
 class ArticleService {
 
@@ -8,6 +9,13 @@ class ArticleService {
 
     async getAsync(id: number): Promise<Article|null> {
         return $fetch(`/api/articles/${id}`)
+    }
+
+    async createAsyn(dto: CreateArticleDto): Promise<Article> {
+        return $fetch('/api/articles', {
+            method: 'POST',
+            body: { dto }
+        })
     }
 }
 

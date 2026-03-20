@@ -12543,16 +12543,16 @@ _PW1kmrCo6hnHHI5eynAa8YvKbn4o4IkcF9y7E_Tg_e4
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"810f2-Iu8Tf9OGM7aI26aHDnTX8J7NLBM\"",
-    "mtime": "2026-03-20T12:54:25.166Z",
-    "size": 528626,
+    "etag": "\"81450-ZxrwBpm+9PxLPlRbhhWaB4zcHCM\"",
+    "mtime": "2026-03-20T14:54:55.515Z",
+    "size": 529488,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"200649-H3u7fmxrqatMdxXNp7N593+YOD0\"",
-    "mtime": "2026-03-20T12:54:25.167Z",
-    "size": 2098761,
+    "etag": "\"20135b-yzfII2XwZHQSWU8L73QNelaClk4\"",
+    "mtime": "2026-03-20T14:54:55.516Z",
+    "size": 2102107,
     "path": "index.mjs.map"
   }
 };
@@ -13275,6 +13275,32 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
+class CategorieService {
+  async getAllAsync(limit) {
+    const query = useSupabase().from("categories").select("*").order("id", { ascending: false });
+    if (limit) query.limit(limit);
+    const { data, error } = await query;
+    if (error) throw createError({ statusCode: 500, message: error.message });
+    return data;
+  }
+  async getAsync(categorie_id) {
+    const { data, error } = await useSupabase().from("categories").select("*").eq("id", categorie_id).single();
+    if (error) throw createError({ statusCode: 404, message: "Categorie introuvable" });
+    return data;
+  }
+  async createAsync(dto) {
+    const { data, error } = await useSupabase().from("categories").insert(dto).select().single();
+    if (error) throw createError({ statusCode: 500, message: error.message });
+    return data;
+  }
+  async resolvedCategoryId(name) {
+    const { data, error } = await useSupabase().from("categories").upsert({ name, color: "white" }, { onConflict: "name" }).select("id").single();
+    if (error) throw createError({ statusCode: 404, message: `Cat\xE9gorie "${name}" introuvable` });
+    return data.id;
+  }
+}
+const categorieService = new CategorieService();
+
 class ArticleService {
   async getAllAsync(limit) {
     const query = useSupabase().from("articles").select("*").order("id", { ascending: false });
@@ -13289,7 +13315,12 @@ class ArticleService {
     return data;
   }
   async createAsync(dto) {
-    const { data, error } = await useSupabase().from("articles").insert(dto).select().single();
+    const category_id = await categorieService.resolvedCategoryId(dto.category);
+    const { category: _, ...articleData } = dto;
+    console.log("categoryId:", category_id);
+    console.log("articleData:", articleData);
+    console.log("insert payload:", { ...articleData, category_id });
+    const { data, error } = await useSupabase().from("articles").insert({ ...articleData, category_id }).select().single();
     if (error) throw createError({ statusCode: 500, message: error.message });
     return data;
   }
@@ -13339,22 +13370,6 @@ const index_post$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
   __proto__: null,
   default: index_post$2
 }, Symbol.toStringTag, { value: 'Module' }));
-
-class CategorieService {
-  async getAllAsync(limit) {
-    const query = useSupabase().from("categories").select("*").order("id", { ascending: false });
-    if (limit) query.limit(limit);
-    const { data, error } = await query;
-    if (error) throw createError({ statusCode: 500, message: error.message });
-    return data;
-  }
-  async getAsync(categorie_id) {
-    const { data, error } = await useSupabase().from("categories").select("*").eq("id", categorie_id).single();
-    if (error) throw createError({ statusCode: 404, message: "Categorie introuvable" });
-    return data;
-  }
-}
-const categorieService = new CategorieService();
 
 const _id__get$2 = defineEventHandler(async (event) => {
   const id = Number(getRouterParam(event, "id"));

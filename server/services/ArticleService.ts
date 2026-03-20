@@ -1,6 +1,7 @@
 import { Article } from "~/types/Article";
 import { IArticleRepository } from "../repositories/IArticlesRepository";
 import { CreateArticleDto } from "~/types/DTO/CreateArticleDto";
+import { categorieService } from "./CategorieService";
 
 class ArticleService implements IArticleRepository {
 
@@ -29,9 +30,17 @@ class ArticleService implements IArticleRepository {
       }
 
     async createAsync(dto: CreateArticleDto): Promise<Article> {
+
+      const category_id = await categorieService.resolvedCategoryId(dto.category);
+      const { category: _, ...articleData } = dto;
+
+      console.log('categoryId:', category_id)
+      console.log('articleData:', articleData)
+      console.log('insert payload:', { ...articleData, category_id: category_id })
+
       const { data, error } = await useSupabase()
         .from('articles')
-        .insert(dto)
+        .insert({ ...articleData, category_id: category_id})
         .select()
         .single()
 
