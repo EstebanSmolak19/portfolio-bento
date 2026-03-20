@@ -2,18 +2,18 @@
   <div class="px-8 py-7 pb-12 flex flex-col gap-4 min-h-full text-[var(--text-primary)]">
     <div class="flex items-start justify-between">
       <div>
-        <h1 class="text-[19px] font-bold text-[var(--text-primary)] mb-1">Vielle</h1>
-        <p class="text-[12px] text-[var(--text-muted)]">{{ displayProjects.length }} Nb d'articles</p>
+        <h1 class="text-[19px] font-bold text-[var(--text-primary)] mb-1">Categories</h1>
+        <p class="text-[12px] text-[var(--text-muted)]">{{ displayCategories.length }} categorie(s)</p>
       </div>
     </div>
 
     <AdminTable
       :columns="columns"
-      :rows="displayProjects"
+      :rows="displayCategories"
       :loading="loading"
       :editable="true"
       :deletable="true"
-      empty-text="Aucun article dans la base de données"
+      empty-text="Aucune catégorie dans la base de données"
       @edit="handleEdit"
       @delete="handleDelete"
       @toggle="handleToggle"
@@ -23,21 +23,20 @@
 
 <script setup lang="ts">
 import useFetchSupa from '~/hooks/useFetch'
-import { articleService } from '~/services/ArticleService'
+import { categorieService } from '~/services/categorieService'
 import type { Article } from '~/types/Article'
+import type { Categorie } from '~/types/Categorie'
 
 definePageMeta({ layout: 'admin' })
 
 const columns = [
-  { key: 'title', label: 'Nom', type: 'main'},
-  { key: 'language', label: 'url', type: 'main' },
-  { key: 'language', label: 'categorie', type: 'main' },
-  { key: 'is_featured', label: 'Mis en avant', type: 'toggle' },
+  { key: 'name', label: 'Nom', type: 'main'},
+  { key: 'color', label: 'Couleur', type: 'color' },
 ]
 
-const { data: projects, loading, execute } = useFetchSupa<Article[]>(() => articleService.getAllAsync())
+const { data: categories, loading, execute } = useFetchSupa<Categorie[]>(() => categorieService.getAllAsync())
 
-const displayProjects = computed(() => projects.value || [])
+const displayCategories = computed(() => categories.value || [])
 
 onMounted(() => execute())
 
