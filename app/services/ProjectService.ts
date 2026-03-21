@@ -4,7 +4,6 @@ import type { CreateProjectDto } from "~/types/DTO/CreateProjectDto";
 
 class ProjectService extends GenericService<Project, CreateProjectDto> {
     constructor() {
-        console.log('oui');
         super('/projects')
     }
 }

@@ -32,7 +32,7 @@ export default function useMethodTable<T extends WithId, TUpdate = Partial<T>>(
     // Mettre en avant ou non l'entity
     const handleToggle = async (row: Record<string, any>, key: string) => {
         const currentValue = row[key];
-            await service.updateAsync(row.id, { [key]: !currentValue } as TUpdate);
+        await service.updateAsync(row.id, { [key]: !currentValue } as TUpdate);
         await execute();
     }
 
@@ -42,7 +42,7 @@ export default function useMethodTable<T extends WithId, TUpdate = Partial<T>>(
         handleDelete,
         handleEditClick,
         handleEditSumbit,
-        handleToggle
+        handleToggle,
     }
 
 }
