@@ -58,7 +58,7 @@ import type { CreateProjectDto } from '~/types/DTO/CreateProjectDto'
 import type { ModalField } from '~/types/ModalField'
 import type { Project } from '~/types/Project'
 
-definePageMeta({ layout: 'admin' })
+definePageMeta({ layout: 'admin', middleware: 'auth' })
 
 const importModal = ref(false)
 const isSubmit = ref(false)

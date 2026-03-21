@@ -90,7 +90,9 @@
             <span class="text-[12px] font-medium text-[var(--text-secondary)] truncate">Estéban Smolak</span>
             <span class="text-[10px] text-[var(--text-faint)]">Administrateur</span>
           </div>
-          <button class="bg-transparent border-none cursor-pointer text-[var(--text-faint)] p-1 rounded-[5px] flex items-center shrink-0 transition-all duration-150 hover:text-red-400 hover:bg-red-400/10">
+          <button
+            class="bg-transparent border-none cursor-pointer text-[var(--text-faint)] p-1 rounded-[5px] flex items-center shrink-0 transition-all duration-150 hover:text-red-400 hover:bg-red-400/10"
+            @click="handleLogout">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
               <path d="M8.5 2H11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H8.5M4.5 9l-3-2.5 3-2.5M1.5 6.5H9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -109,6 +111,11 @@
 
 <script setup lang="ts">
 import { useTheme } from '~/hooks/useTheme'
+
+const handleLogout = () => {
+  $fetch('/api/auth/logout', { method: 'POST' });
+  window.location.href = '/';
+}
 
 const { theme, toggleTheme } = useTheme()
 </script>

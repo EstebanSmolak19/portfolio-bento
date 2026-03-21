@@ -122,7 +122,7 @@ import { Icon } from '@iconify/vue'
 import Card from '~/components/UI/Card.vue'
 import Diviser from '~/components/UI/Diviser.vue'
 
-definePageMeta({ layout: 'default' })
+definePageMeta({ layout: 'default'})
 
 const splashDone = inject<Ref<boolean>>('splashDone', ref(false))
 const ready = ref(false)

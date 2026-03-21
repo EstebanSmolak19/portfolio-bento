@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "lottie-web": "^5.13.0",
     "nuxt": "^4.3.1",
+    "nuxt-auth-utils": "^0.5.29",
     "primevue": "^4.5.4",
     "tailwindcss": "^4.2.1",
     "vue": "^3.5.28",

@@ -41,7 +41,7 @@ import type { Article } from '~/types/Article'
 import type { CreateArticleDto } from '~/types/DTO/CreateArticleDto'
 import type { ModalField } from '~/types/ModalField'
 
-definePageMeta({ layout: 'admin' })
+definePageMeta({ layout: 'admin', middleware: 'auth' })
 
 const { data, loading, execute } = useFetchSupa<Article[]>(() => articleService.getAllAsync())
 
