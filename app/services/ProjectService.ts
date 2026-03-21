@@ -1,20 +1,11 @@
 import type { Project } from "~/types/Project";
+import { GenericService } from "./GenericService";
+import type { CreateProjectDto } from "~/types/DTO/CreateProjectDto";
 
-class ProjectService {
-
-    async getAllAsync(limit?: number): Promise<Project[]> {
-        return $fetch('/api/projects', {query: { limit }})
-    }
-
-    async getAsync(id: number): Promise<Project|null> {
-        return $fetch(`/api/projects/${id}`)
-    }
-
-    async createProject(link: string): Promise<Project> {
-        return $fetch('/api/projects', {
-            method: 'POST',
-            body: { link }
-        })
+class ProjectService extends GenericService<Project, CreateProjectDto> {
+    constructor() {
+        console.log('oui');
+        super('/projects')
     }
 }
 

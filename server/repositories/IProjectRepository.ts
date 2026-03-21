@@ -1,12 +1,7 @@
 import type { Project } from "~/types/Project";
+import type { CreateProjectDto } from "~/types/DTO/CreateProjectDto";
+import { IGenericRepository } from "./IGenericRepository";
 
-export interface IProjectRepository {
-    // Récupère tous les projets
-    getAllAsync(limit?: number) : Promise<Project[]>;
-
-    //Récupère un projet en fonction de son ID
-    getAsync(article_id: number): Promise<Project|null>;
-
-    //Créer un projet (API Github)
-    createProject(link: string): Promise<Project>;
+export interface IProjectRepository extends IGenericRepository<Project, CreateProjectDto>
+{
 }

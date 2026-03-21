@@ -51,6 +51,7 @@
 import useFetchSupa from '~/hooks/useFetch'
 import { ProjectSchema } from '~/schema/ProjectSchema'
 import { projectService } from '~/services/ProjectService'
+import type { CreateProjectDto } from '~/types/DTO/CreateProjectDto'
 import type { Project } from '~/types/Project'
 
 definePageMeta({ layout: 'admin' })
@@ -74,13 +75,18 @@ onMounted(() => execute())
 const handleSubmit = async (form: Record<string, any>) => {
   errors.value = {}
   const result = ProjectSchema.safeParse(form)
+
+  const link: CreateProjectDto = {
+    link: result.data.link
+  }
+
   if (!result.success) {
     errors.value = result.error.flatten().fieldErrors as Record<string, string[]>
     return
   }
   try {
     isSubmit.value = true
-    await projectService.createProject(result.data.link)
+    await projectService.createAsync(link)
     modal.value = false
     await execute()
   } catch (err: any) {
@@ -90,19 +96,22 @@ const handleSubmit = async (form: Record<string, any>) => {
   }
 }
 
-const handleEdit = (row: Project) => {
-  form.link = row.link
-  modal.value = true
+const handleEdit = async (row: Project) => {
+  // await projectService.updateAsync(row.id);
 }
 
 const handleDelete = async (row: Project) => {
-  // await projectService.delete(row.id)
-  // await execute()
+  await projectService.deleteAsync(row.id)
+  await execute()
 }
 
-const handleToggle = async (row: Project, key: string) => {
-  // await projectService.update(row.id, { [key]: !row[key] })
-  // await execute()
+const handleToggle = async (row: Record<string, any>, key: string) => {
+  const project = row as Project;
+  const currentValue = project[key as keyof Project];
+  await projectService.updateAsync(row.id, {
+    [key]: !currentValue
+  });
+  await execute()
 }
 
 const openModal = () => {

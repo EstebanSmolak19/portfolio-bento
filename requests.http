@@ -5,9 +5,9 @@ Content-Type: application/json
 {
     "title": "Les nouveautés de Vue 3.4",
     "summary": "Vue 3.4 apporte des améliorations significatives sur les performances du compilateur et une nouvelle API de définition des props.",
-    "category": "Vue",
+    "category": "Laravel",
     "score": 8,
     "author": "Evan You",
-    "url": "https://blog.vuejs.org/posts/vue-3-4",
+    "url": "https://blog.vuejs.org/posts/vue-3-444",
     "published_at": "2026-03-20"
 }

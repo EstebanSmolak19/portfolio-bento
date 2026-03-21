@@ -1,13 +1,10 @@
 import type { Categorie } from "~/types/Categorie";
+import type { CreateCategoryDto } from "~/types/DTO/CreateCategoryDto";
+import { GenericService } from "../services/GenericService";
 
-class CategorieService {
-
-    async getAllAsync(limit?: number): Promise<Categorie[]> {
-        return $fetch('/api/categories', {query: { limit }})
-    }
-
-    async getAsync(id: number): Promise<Categorie|null> {
-        return $fetch(`/api/categories/${id}`)
+class CategorieService extends GenericService<Categorie, CreateCategoryDto>{
+    constructor() {
+        super('/categories');
     }
 }
 
