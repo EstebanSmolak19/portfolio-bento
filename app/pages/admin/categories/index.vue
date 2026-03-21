@@ -35,16 +35,18 @@
 import AdminModal from '~/components/admin/AdminModal.vue'
 import AdminTable from '~/components/admin/AdminTable.vue'
 import useFetchSupa from '~/hooks/useFetch'
-import useShowModal from '~/hooks/useShowModal'
+import useMethodTable from '~/hooks/useMethodTable'
 import { categorieService } from '~/services/CategorieService'
-import type { Article } from '~/types/Article'
 import type { Categorie } from '~/types/Categorie'
 import type { ModalField } from '~/types/ModalField'
 
 definePageMeta({ layout: 'admin' })
 
-const { show, setShow } = useShowModal();
-const selectedCategory = ref<Record<string, any> | null>(null);
+const { data , loading, execute } = useFetchSupa<Categorie[]>(() => categorieService.getAllAsync())
+
+const { show, selectedType: selectedCategory,
+   handleDelete, handleEditClick, handleEditSumbit } = useMethodTable<Categorie>(categorieService, execute);
+
 
 const fields: ModalField[] = [
   {
@@ -68,29 +70,8 @@ const columns = [
   { key: 'color', label: 'Couleur', type: 'color' },
 ]
 
-const { data: categories, loading, execute } = useFetchSupa<Categorie[]>(() => categorieService.getAllAsync())
-
-const displayCategories = computed(() => categories.value || [])
+const displayCategories = computed(() => data.value || [])
 
 onMounted(() => execute())
-
-const handleEditClick = (row: Record<string, any>) => {
-  selectedCategory.value = { ...row };
-  setShow();
-};
-
-
-const handleEditSumbit = async (row: Record<string, any>) => {
-  const id = selectedCategory.value?.id;
-  await categorieService.updateAsync(id, row);
-  await execute()
-  setShow(); // Change la valeur de show via le useShowModal
-}
-
-const handleDelete = async (row: Record<string, any>) => {
-  const categorie = row as Article;
-  await categorieService.deleteAsync(categorie.id)
-  await execute()
-}
 
 </script>
