@@ -4,7 +4,9 @@ import Card from '~/components/UI/Card.vue'
 import Diviser from '~/components/UI/Diviser.vue'
 import useFetchSupa from '~/hooks/useFetch'
 import { projectService } from '~/services/ProjectService'
+import { skillService } from '~/services/SkillService'
 import type { Project } from '~/types/Project'
+import type { Skill } from '~/types/Skill'
 
 definePageMeta({ layout: 'default' })
 
@@ -12,6 +14,7 @@ const splashDone = inject<Ref<boolean>>('splashDone', ref(false))
 const ready = ref(false)
 const barsAnimated = ref(false)
 const { data: featuredProject, execute } = useFetchSupa<Project|null>(() => projectService.getFeaturedProject())
+const { data: skills, execute: executeSkills } = useFetchSupa<Skill[]>(() => skillService.getAllAsync())
 
 const age = computed(() => {
   const birth = new Date(2006, 4, 19)
@@ -22,17 +25,6 @@ const age = computed(() => {
   return ageNow
 })
 
-const skills = [
-  { name: 'Laravel',    icon: 'logos:laravel',           level: 90 },
-  { name: 'Nuxt',       icon: 'logos:nuxt-icon',         level: 85 },
-  { name: 'Vue.js',     icon: 'logos:vue',               level: 85 },
-  { name: 'TypeScript', icon: 'logos:typescript-icon',   level: 75 },
-  { name: 'Tailwind',   icon: 'logos:tailwindcss-icon',  level: 95 },
-  { name: 'Supabase',   icon: 'logos:supabase-icon',     level: 70 },
-  { name: 'Docker',     icon: 'logos:docker-icon',       level: 60 },
-  { name: 'PostgreSQL', icon: 'logos:postgresql',        level: 70 },
-]
-
 watch(splashDone, (val) => {
   if (val) {
     setTimeout(() => { ready.value = true }, 80)
@@ -40,7 +32,10 @@ watch(splashDone, (val) => {
   }
 }, { immediate: true })
 
-onMounted(() => execute())
+onMounted(() => {
+  execute(),
+  executeSkills()
+})
 
 const socialLinks = [
   { href: '#',                                           target: '_self',  icon: 'mdi:file-document-outline', label: 'CV' },
@@ -104,7 +99,7 @@ const socialLinks = [
               </div>
               <span class="skill-pct">{{ skill.level }}%</span>
             </div>
-            <div v-if="i < skills.length - 1" class="skill-divider" />
+            <div v-if="i < skills!.length - 1" class="skill-divider" />
           </template>
         </div>
       </div>
@@ -243,20 +238,11 @@ const socialLinks = [
 .card-formation.card-ready { transition-delay: 490ms; }
 .card-veille.card-ready    { transition-delay: 560ms; }
 
-/* ══════════════════════════════════════════════
-   SKILLS — fix scroll
-   Le problème : .skills-wrapper n'avait pas de
-   hauteur contrainte, donc .skills-scroll ne
-   pouvait pas être plus petit que son contenu.
-   Solution : height: 100% + overflow: hidden sur
-   le wrapper, et min-height: 0 sur le scroll.
-══════════════════════════════════════════════ */
 .skills-wrapper {
   display: flex;
   flex-direction: column;
-  /* Prend toute la hauteur disponible de la card */
   height: 100%;
-  /* Empêche le wrapper de déborder */
+  width: 100%;
   overflow: hidden;
   padding: 10px 6px;
 }
@@ -266,7 +252,6 @@ const socialLinks = [
   justify-content: flex-end;
   margin-bottom: 6px;
   padding: 0 4px;
-  /* Ne rétrécit jamais */
   flex-shrink: 0;
 }
 
@@ -310,7 +295,6 @@ const socialLinks = [
   overflow: hidden;
   cursor: default;
   box-sizing: border-box;
-  /* Ne rétrécit jamais verticalement */
   flex-shrink: 0;
 }
 
@@ -413,7 +397,6 @@ const socialLinks = [
 .overlay-sub { font-size: 11px; color: #fda4af; }
 .overlay-action { font-size: 11px; color: #f43f5e; margin-top: 6px; font-family: monospace; }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
   .bento-grid { height: auto; grid-template-columns: repeat(3, 1fr); grid-template-areas: "profile  profile  photo" "profile  profile  photo" "project  project  skills" "exp      exp      linkedin" "contact  contact  formation" "veille   veille   veille"; }
 }
