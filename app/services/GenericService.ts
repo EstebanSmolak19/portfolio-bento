@@ -1,7 +1,7 @@
 export class GenericService<T, CreateDto extends object, UpdateDto extends object = Partial<CreateDto>> {
     constructor(protected readonly endpoint: string) {}
 
-    private get BaseUrl(): string {
+    protected get BaseUrl(): string {
         const config = useRuntimeConfig();
         return`${config.public.apiBase}${this.endpoint}`;
     }

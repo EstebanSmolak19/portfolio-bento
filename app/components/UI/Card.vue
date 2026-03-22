@@ -6,13 +6,15 @@ type Props = {
   accent?: 'blue' | 'purple' | 'cyan' | 'amber' | 'rose' | 'violet'
   picture?: boolean
   neon?: boolean
-  backgroundColor?: string
+  backgroundColor?: string,
+  tilt?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   accent: 'violet',
   neon: false,
   backgroundColor: '',
+  tilt: false
 })
 
 const { theme } = useTheme()
@@ -78,19 +80,24 @@ function onMouseMove(e: MouseEvent) {
   const r  = el.getBoundingClientRect()
   const x  = e.clientX - r.left
   const y  = e.clientY - r.top
-  const cx = r.width  / 2
-  const cy = r.height / 2
-  const rotX = ((y - cy) / cy) * -6
-  const rotY = ((x - cx) / cx) *  6
-  el.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`
-  el.style.setProperty('--mx', `${((x / r.width)  * 100).toFixed(1)}%`)
-  el.style.setProperty('--my', `${((y / r.height) * 100).toFixed(1)}%`)
+
+  if(props.tilt) {
+    const cx = r.width  / 2
+    const cy = r.height / 2
+    const rotX = ((y - cy) / cy) * -6
+    const rotY = ((x - cx) / cx) *  6
+    el.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`
+    el.style.setProperty('--mx', `${((x / r.width)  * 100).toFixed(1)}%`)
+    el.style.setProperty('--my', `${((y / r.height) * 100).toFixed(1)}%`)
+  }
 }
 
 function onMouseLeave() {
   const el = cardRef.value
   if (!el) return
-  el.style.transform = ''
+  if(props.tilt) {
+    el.style.transform = ''
+  }
 }
 </script>
 

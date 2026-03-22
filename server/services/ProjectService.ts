@@ -32,6 +32,20 @@ class ProjectService extends GenericService<Project, CreateProjectDto>
     if (error) throw createError({ statusCode: 500, message: error.message });
     return data as Project;
   }
+
+  async getFirstPageProject(): Promise<Project|null> {
+    const query = useSupabase()
+        .from(this.tableName)
+        .select('*')
+        .eq('first_page', true)
+        .limit(1)
+        .maybeSingle()
+
+      const { data, error } = await query;
+      if (error) throw createError({ statusCode: 500, message: error.message });
+
+      return data as Project|null;
+    }
 }
 
 export const projectService = new ProjectService();

@@ -122,6 +122,7 @@ const columns = [
   { key: 'title', label: 'Projet', type: 'main'},
   { key: 'language', label: 'Stack', type: 'main' },
   { key: 'is_featured', label: 'Mis en avant', type: 'toggle' },
+  { key: 'first_page', label: 'Première page', type: 'toggle' },
 ]
 
 const { data: projects, loading, execute } = useFetchSupa<Project[]>(() => projectService.getAllAsync())

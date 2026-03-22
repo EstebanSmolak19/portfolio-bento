@@ -6,6 +6,14 @@ class ProjectService extends GenericService<Project, CreateProjectDto> {
     constructor() {
         super('/projects')
     }
+
+    /**
+     * Récupère le projet mis en avant sur la première page du portfolio.
+    */
+    async getFeaturedProject(): Promise<Project|null> {
+        const data = await $fetch(`${this.BaseUrl}/featured`);
+        return data as Project|null;
+    }
 }
 
 export const projectService = new ProjectService();
