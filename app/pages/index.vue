@@ -13,6 +13,7 @@ definePageMeta({ layout: 'default' })
 const splashDone = inject<Ref<boolean>>('splashDone', ref(false))
 const ready = ref(false)
 const barsAnimated = ref(false)
+
 const { data: featuredProject, execute } = useFetchSupa<Project|null>(() => projectService.getFeaturedProject())
 const { data: skills, execute: executeSkills } = useFetchSupa<Skill[]>(() => skillService.getAllAsync())
 
@@ -129,7 +130,7 @@ const socialLinks = [
 
     <!-- LINKEDIN -->
     <Card :picture="true" backgroundColor="#4B1A9B" :neon="true" accent="purple" class="card-linkedin" :class="{ 'card-ready': ready }">
-      <a href="https://www.linkedin.com/in/esteban-smolak/" class="img-link">
+      <a href="https://www.linkedin.com/in/esteban-smolak/" class="img-link" target="__blank">
         <img src="/img/index/linkedinTel.png" alt="LinkedIn" class="img-slide-up" />
       </a>
     </Card>
@@ -150,13 +151,13 @@ const socialLinks = [
     <Card label="Contact" accent="amber" class="card-contact" :class="{ 'card-ready': ready }">
       <div class="contact-inner">
         <p class="contact-label">Email</p>
-        <p class="contact-value">estebansmolak@gmail.com</p>
+        <a class="contact-value" href='mailto:estebansmolak@gmail.com'>estebansmolak@gmail.com</a>
       </div>
     </Card>
 
     <!-- FORMATION -->
     <Card :picture="true" :neon="true" accent="amber" backgroundColor="rgba(245,158,11,0.15)" class="card-formation" :class="{ 'card-ready': ready }">
-      <a href="https://www.groupesaintbenigne.fr/lycee/" class="img-link">
+      <a href="https://www.groupesaintbenigne.fr/lycee/" class="img-link" target="__blank">
         <img src="/img/index/ecoleTel.png" alt="école" class="img-slide-up" />
       </a>
     </Card>
@@ -380,7 +381,7 @@ const socialLinks = [
 .exp-title { font-size: clamp(1.2rem,2.2vw,2.4rem); font-weight: 900; text-transform: uppercase; background: linear-gradient(90deg, #8b5cf6, #6366f1, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .contact-inner { display: flex; flex-direction: column; padding: 12px; gap: 4px; }
 .contact-label { font-size: 11px; text-transform: uppercase; color: var(--text-accent); }
-.contact-value { font-weight: 500; font-size: clamp(0.72rem,0.9vw,0.9rem); color: var(--text-primary); }
+.contact-value { font-weight: 500; font-size: clamp(0.72rem,0.9vw,0.9rem); color: var(--text-primary); text-decoration: none;}
 .full-img { width: 100%; height: 100%; object-fit: cover; }
 .img-link { display: block; width: 100%; height: 100%; transform: translateY(-35px); }
 .img-slide-up { width: 100%; transform: scale(1.3) translateY(60px); transition: transform 0.4s ease; }
@@ -388,11 +389,13 @@ const socialLinks = [
 
 /* VEILLE */
 .veille-inner { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 16px; gap: 12px; text-decoration: none; }
-.veille-text-static { display: flex; flex-direction: column; align-items: center; }
+.veille-text-static { display: flex; flex-direction: column; align-items: center; transition: ease .3s;}
 .veille-title { font-size: 14px; font-weight: 600; text-transform: uppercase; color: var(--text-primary); }
 .veille-sub { font-size: 12px; color: #f43f5e; }
-.veille-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(76,5,25,0.4); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.4s; }
+.veille-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(76,5,25,0.4); backdrop-filter: blur(4px); opacity: 0; transition: opacity .7s; }
 .card-veille:hover .veille-overlay { opacity: 1; }
+.card-veille:hover .veille-text-static { opacity: 0; }
+
 .overlay-title { font-size: 14px; font-weight: 700; color: #fff; }
 .overlay-sub { font-size: 11px; color: #fda4af; }
 .overlay-action { font-size: 11px; color: #f43f5e; margin-top: 6px; font-family: monospace; }

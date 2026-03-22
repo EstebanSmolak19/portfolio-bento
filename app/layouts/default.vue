@@ -1,6 +1,6 @@
 <template>
   <div class="layout" @mousemove="onMouseMove" @mouseleave="onMouseLeave">
-    <SplashScreen @done="splashDone = true" />
+      <SplashScreen @done="splashDone = true" v-if="isHome && !splashDone"/>
     <Header />
 
     <div v-if="theme === 'dark'" class="cosmos-overlay" aria-hidden="true">
@@ -9,7 +9,7 @@
       <div class="nebula nebula-3" :style="{ transform: `translate(${mx * 0.012}px, ${my * 0.030}px) scale(0.92)` }" />
       <div class="nebula nebula-4" :style="{ transform: `translate(${mx * -0.015}px, ${my * -0.012}px) scale(0.92)` }" />
 
-      <!-- Constellation gauche bas -->
+      <!-- Constel lation gauche bas -->
       <svg class="const const-gb" viewBox="0 0 160 110" :style="{ transform: `translate(${mx * -0.006}px, ${my * -0.008}px)` }">
         <line x1="10"  y1="70"  x2="40"  y2="50"  class="c-line" />
         <line x1="40"  y1="50"  x2="75"  y2="45"  class="c-line" />
@@ -91,10 +91,14 @@
 import Footer from '~/components/Footer.vue'
 import Header from '~/components/Header.vue'
 import SplashScreen from '~/components/UI/SplashScreen.vue'
+import useSplashNavigation from '~/hooks/useSplashNavigation'
 import { useTheme } from '~/hooks/useTheme'
 
 const { theme } = useTheme()
-const splashDone = ref(false)
+const { isHome, splashDone, initSplash } = useSplashNavigation()
+
+initSplash()
+
 provide('splashDone', splashDone)
 
 const mx = ref(0)
@@ -120,7 +124,11 @@ function animate() {
   if (moving) { rafId = requestAnimationFrame(animate) }
   else { mx.value = targetX; my.value = targetY; rafId = null }
 }
-onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
+onUnmounted(() => {
+  if (rafId) cancelAnimationFrame(rafId)
+})
+
+
 </script>
 
 <style scoped>
@@ -146,9 +154,6 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   z-index: 1;
 }
 
-/* ══════════════════════════════════════════════
-   COSMOS OVERLAY
-══════════════════════════════════════════════ */
 .cosmos-overlay {
   position: fixed;
   inset: 0;
@@ -157,9 +162,6 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   overflow: hidden;
 }
 
-/* ──────────────────────────────────────────
-   NÉBULEUSES
-────────────────────────────────────────── */
 .nebula {
   position: absolute;
   border-radius: 50%;
@@ -195,30 +197,23 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   100% { opacity: 0.0; }
 }
 
-/* ══════════════════════════════════════════════
-   CONSTELLATIONS — statiques, positionnées aux 4 coins
-   Pas d'animation, juste le parallaxe souris léger
-══════════════════════════════════════════════ */
 .const {
   position: absolute;
   will-change: transform;
-  opacity: 0.55; /* subtiles mais visibles */
+  opacity: 0.55;
 }
 
-/* Positions des 4 constellations */
 .const-gl { top: 8%;    left: 10px;  width: 110px; height: 200px; }
 .const-gb { bottom: 8%; left: 10px;  width: 160px; height: 110px; }
 .const-dh { top: 6%;    right: 10px; width: 180px; height: 70px;  }
 .const-db { top: 30%;   right: 10px; width: 100px; height: 210px; }
 
-/* Traits */
 .c-line {
   stroke: rgba(167, 139, 250, 0.28);
   stroke-width: 0.7;
   stroke-dasharray: 4 4;
 }
 
-/* Points étoiles */
 .c-star {
   fill: rgba(220, 228, 255, 0.80);
 }
@@ -226,7 +221,6 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   fill: rgba(160, 170, 230, 0.45);
 }
 
-/* Label — texte discret, à modifier librement */
 .c-label {
   fill: rgba(139, 92, 246, 0.40);
   font-size: 8px;
@@ -235,9 +229,6 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   text-transform: uppercase;
 }
 
-/* ──────────────────────────────────────────
-   PLANÈTE VIOLET ORIGINAL
-────────────────────────────────────────── */
 .planet-wrap {
   position: absolute;
   bottom: -80px; right: -70px;
@@ -314,9 +305,6 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   to   { transform: rotate(360deg); }
 }
 
-/* ──────────────────────────────────────────
-   ÉTOILES FILANTES
-────────────────────────────────────────── */
 .shooting-star {
   position: absolute;
   height: 1px;
@@ -333,7 +321,6 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   100% { opacity: 0; transform: translateX(260px) rotate(-20deg); }
 }
 
-/* ── Tablet ── */
 @media (max-width: 1024px) {
   .layout { height: auto; min-height: 100dvh; overflow: visible; }
   .layout-main { overflow: visible; align-items: flex-start; padding: 88px 16px 32px; }
@@ -341,7 +328,6 @@ onUnmounted(() => { if (rafId) cancelAnimationFrame(rafId) })
   .const { display: none; }
 }
 
-/* ── Mobile ── */
 @media (max-width: 640px) {
   .layout-main { padding: 72px 10px 20px; }
   .nebula      { filter: blur(60px); }

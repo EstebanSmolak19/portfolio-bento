@@ -122,7 +122,7 @@ function onMouseLeave() {
     </template>
 
     <div
-      class="flex-1 flex items-center justify-center p-2 z-10 min-h-0"
+      class="flex-1 flex items-center justify-center p-2 z-10 min--0"
       :style="{ color: 'var(--text-primary)' }"
       :class="{ 'overflow-hidden relative !p-0': picture }"
     >

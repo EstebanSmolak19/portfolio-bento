@@ -57,7 +57,7 @@ const { theme, toggleTheme } = useTheme()
 const mobileOpen = ref(false)
 
 const navLinks = [
-  { name: 'BTS',     slug: '/bts-sio'      },
+  { name: 'BTS',     slug: '/bts'      },
   { name: 'Formations',  slug: '/Formations'   },
   { name: 'Expériences', slug: '/Expériences'  },
   { name: 'Contact',     slug: '/Contact'      },

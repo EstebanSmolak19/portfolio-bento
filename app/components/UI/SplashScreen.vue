@@ -6,7 +6,6 @@
       <div class="center">
         <div class="lottie-wrap" :class="{ in: phase >= 1 }">
 
-          <!-- Aura canvas autour de la Lottie -->
           <canvas ref="auraCanvas" class="aura-canvas" />
 
           <!-- Rings CSS -->
@@ -40,7 +39,6 @@ const lottieEl   = ref<HTMLElement | null>(null)
 let raf: number
 let auraRaf: number
 
-// ── Lottie (import dynamique client-only) ─────────────────────────────────
 async function startLottie() {
   if (!lottieEl.value) return
   const { default: lottie } = await import('lottie-web')
@@ -53,7 +51,6 @@ async function startLottie() {
   })
 }
 
-// ── Aura canvas orbitale ──────────────────────────────────────────────────
 function startAura() {
   const canvas = auraCanvas.value
   if (!canvas) return
@@ -63,7 +60,6 @@ function startAura() {
   canvas.height = S
   const C = S / 2
 
-  // orbes orbitaux locaux autour du perso
   const orbs = [
     { angle: 0,                  r: 118, speed: 0.004,  size: 3.5, hue: 260, alpha: 0.9  },
     { angle: Math.PI,            r: 118, speed: 0.004,  size: 2.5, hue: 280, alpha: 0.7  },
@@ -73,7 +69,6 @@ function startAura() {
     { angle: Math.PI * 1.7,      r: 145, speed: -0.005, size: 1.5, hue: 220, alpha: 0.35 },
   ]
 
-  // traînes pour chaque orbe
   const trails: { x: number; y: number }[][] = orbs.map(() => [])
   const TRAIL = 32
 
@@ -137,7 +132,6 @@ function startAura() {
   draw()
 }
 
-// ── Canvas fond étoilé ────────────────────────────────────────────────────
 function startCanvas() {
   const canvas = canvasEl.value
   if (!canvas) return
@@ -199,7 +193,6 @@ function startCanvas() {
   draw()
 }
 
-// ── Progression ───────────────────────────────────────────────────────────
 function runProgress() {
   const steps = [
     { target: 22, duration: 300 },
