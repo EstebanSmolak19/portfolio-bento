@@ -67,10 +67,10 @@ const cardBg = computed(() => {
     : 'rgba(255,253,248,0.82)'
 })
 
-const borderColor = computed(() => a.value.border)
-const glowColor   = computed(() => a.value.glow)
-const headerBg    = computed(() => a.value.header)
-const spotColor   = computed(() => `rgba(${a.value.color}, 0.09)`)
+const borderColor = computed(() => a.value?.border)
+const glowColor   = computed(() => a.value?.glow)
+const headerBg    = computed(() => a.value?.header)
+const spotColor   = computed(() => `rgba(${a.value?.color}, 0.09)`)
 
 const cardRef = ref<HTMLElement | null>(null)
 
@@ -122,7 +122,7 @@ function onMouseLeave() {
     </template>
 
     <div
-      class="flex-1 flex items-center justify-center p-2 z-10"
+      class="flex-1 flex items-center justify-center p-2 z-10 min-h-0"
       :style="{ color: 'var(--text-primary)' }"
       :class="{ 'overflow-hidden relative !p-0': picture }"
     >
