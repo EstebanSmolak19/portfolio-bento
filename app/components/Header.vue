@@ -58,7 +58,7 @@ const mobileOpen = ref(false)
 
 const navLinks = [
   { name: 'BTS',     slug: '/bts'      },
-  { name: 'Formations',  slug: '/Formations'   },
+  { name: 'Formations',  slug: '/formations'   },
   { name: 'Expériences', slug: '/Expériences'  },
   { name: 'Contact',     slug: '/Contact'      },
 ]

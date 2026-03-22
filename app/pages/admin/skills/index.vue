@@ -2,7 +2,7 @@
   <div class="px-8 py-7 pb-12 flex flex-col gap-4 min-h-full text-[var(--text-primary)]">
     <div class="flex items-start justify-between">
       <div>
-        <h1 class="text-[19px] font-bold text-[var(--text-primary)] mb-1">Vielle</h1>
+        <h1 class="text-[19px] font-bold text-[var(--text-primary)] mb-1">Compétences</h1>
         <p class="text-[12px] text-[var(--text-muted)]">{{ displayArticles.length }} Nb de compétences</p>
       </div>
       <button
