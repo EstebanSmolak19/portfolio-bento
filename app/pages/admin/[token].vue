@@ -70,10 +70,17 @@
 <script setup lang="ts">
 definePageMeta({ layout: false })
 
-const form = reactive({ email: '', password: '' })
-const show = ref(false)
-const loading = ref(false)
-const error = ref('')
+const route = useRoute();
+const form = reactive({ email: '', password: '' });
+const show = ref(false);
+const loading = ref(false);
+const error = ref('');
+
+const validToken: boolean = route.params.token === useRuntimeConfig().public.adminToken // Veriff du token
+
+if (!validToken) {
+  throw createError({ statusCode: 404, fatal: true });
+}
 
 const handleLogin = async () => {
   error.value = ''

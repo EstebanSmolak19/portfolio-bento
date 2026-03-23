@@ -59,7 +59,7 @@ import type { CreateTrainingDto } from '~/types/DTO/CreateTrainingDto'
 import type { ModalField } from '~/types/ModalField'
 import type { Training } from '~/types/Training'
 
-definePageMeta({ layout: 'admin', middleware: 'auth' })
+definePageMeta({ layout: 'admin' })
 
 const { data, loading, execute } = useFetchSupa<Training[]>(() => trainingService.getAllAsync())
 

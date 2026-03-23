@@ -126,8 +126,8 @@
 <script setup lang="ts">
 import { useTheme } from '~/hooks/useTheme'
 
-const handleLogout = () => {
-  $fetch('/api/auth/logout', { method: 'POST' });
+const handleLogout = async () => {
+  await $fetch('/api/auth/logout', { method: 'POST' });
   window.location.href = '/';
 }
 

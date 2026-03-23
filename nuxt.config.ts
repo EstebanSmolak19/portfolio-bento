@@ -14,9 +14,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     supabaseUrl: process.env.VITE_SUPABASE_URL,
     supabaseKey: process.env.VITE_SUPABASE_ANON_KEY,
-    
+
     public: {
-      apiBase: process.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
+      apiBase: process.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
+      adminToken: process.env.ADMIN_TOKEN
     }
   },
 

@@ -1,4 +1,3 @@
-import { IArticleRepository } from "../repositories/IArticlesRepository";
 import { GenericService } from "./GenericService";
 import { Skill } from "~/types/Skill";
 import { CreateSkillDto } from "~/types/DTO/CreateSkillDto";

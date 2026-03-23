@@ -59,7 +59,7 @@ import type { CreateSkillDto } from '~/types/DTO/CreateSkillDto'
 import type { ModalField } from '~/types/ModalField'
 import type { Skill } from '~/types/Skill'
 
-definePageMeta({ layout: 'admin', middleware: 'auth' })
+definePageMeta({ layout: 'admin' })
 
 const { data, loading, execute } = useFetchSupa<Skill[]>(() => skillService.getAllAsync())
 const importModal = ref(false)

@@ -40,7 +40,7 @@ import { categorieService } from '~/services/CategorieService'
 import type { Categorie } from '~/types/Categorie'
 import type { ModalField } from '~/types/ModalField'
 
-definePageMeta({ layout: 'admin', middleware: 'auth' })
+definePageMeta({ layout: 'admin' })
 
 const { data , loading, execute } = useFetchSupa<Categorie[]>(() => categorieService.getAllAsync())
 
