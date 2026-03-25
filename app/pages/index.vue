@@ -142,7 +142,7 @@ const socialLinks = [
 
     <!-- EXPERIENCES -->
     <Card accent="violet" class="card-exp" :class="{ 'card-ready': ready }">
-      <NuxtLink to="/Expériences" class="exp-link">
+      <NuxtLink to="/experiences" class="exp-link">
         <h1 class="exp-title">Expériences</h1>
       </NuxtLink>
     </Card>

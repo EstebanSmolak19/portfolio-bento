@@ -56,8 +56,6 @@
 </template>
 
 <script setup lang="ts">
-import Header from '~/components/Header.vue'
-import Footer from '~/components/Footer.vue'
 import type { Training } from '~/types/Training'
 import { trainingService } from '~/services/TrainingService'
 import useFetchSupa from '~/hooks/useFetch'

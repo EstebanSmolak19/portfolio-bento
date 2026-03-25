@@ -70,6 +70,16 @@
           Formations
         </NuxtLink>
 
+        <NuxtLink to="/admin/experiences" active-class="nav-active" class="nav-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 12.5h12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            <rect x="2" y="7" width="2.5" height="5.5" rx="0.5" stroke="currentColor" stroke-width="1.25"/>
+            <rect x="5.75" y="4" width="2.5" height="8.5" rx="0.5" stroke="currentColor" stroke-width="1.25"/>
+            <rect x="9.5" y="1.5" width="2.5" height="11" rx="0.5" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+          Expériences
+        </NuxtLink>
+
         <p class="text-[10px] font-semibold uppercase tracking-widest text-[var(--text-faint)] px-1.5 mb-1 mt-5">Général</p>
 
         <a href="/" target="_blank" class="nav-item">
