@@ -6,8 +6,8 @@ export const useTheme = () => {
         applyTheme(theme.value);
     }
 
-    const applyTheme = (theme: 'dark' | 'light') => {
-        document.documentElement.setAttribute('data-theme', theme);
+    const applyTheme = (themeValue: 'dark' | 'light') => {
+        document.documentElement.setAttribute('data-theme', themeValue);
     }
 
     onMounted(() => applyTheme(theme.value));
