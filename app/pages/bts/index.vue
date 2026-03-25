@@ -8,38 +8,43 @@
                 <h1 class="hero-title">BTS<br/><span class="hero-accent">SIO</span></h1>
                 <p class="hero-school">Lycée Saint-Bénigne · Dijon</p>
                 <div class="hero-badge">
-                    <span class="badge-dot" />
                     option SLAM
                 </div>
             </div>
 
             <div class="block block-options anim" style="--d:150ms">
                 <div class="options-row">
-                    <div class="opt opt-active">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.3"/>
-                        <path d="M5 8.5l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>SLAM</span>
-                    <span class="opt-tag">mon choix</span>
+                    <div
+                      class="opt"
+                      :class="{ 'opt-active': selectedOption === 'SLAM', 'opt-dim': selectedOption !== 'SLAM' }"
+                      @click="selectedOption = 'SLAM'"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.3"/>
+                            <path d="M5 8.5l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>SLAM</span>
                     </div>
                     <div class="opt-sep">vs</div>
-                    <div class="opt opt-dim">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.3"/>
-                        <path d="M5 6h6M5 8.5h4.5M5 11h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                    </svg>
-                    <span>SISR</span>
+                    <div
+                      class="opt"
+                      :class="{ 'opt-active': selectedOption === 'SISR', 'opt-dim': selectedOption !== 'SISR' }"
+                      @click="selectedOption = 'SISR'"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.3"/>
+                            <path d="M5 6h6M5 8.5h4.5M5 11h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                        </svg>
+                        <span>SISR</span>
+                    </div>
                 </div>
-            </div>
-            <p class="opt-desc">Solutions Logicielles et Applications Métiers — développement web, mobile et logiciel de A à Z.</p>
+                <p class="opt-desc">{{ optionData.desc }}</p>
             </div>
 
             <div class="block block-why anim" style="--d:300ms">
-                <div class="why-label">Pourquoi SLAM ?</div>
+                <div class="why-label">{{ optionData.whyLabel }}</div>
                 <p class="why-text">
-                    Créer des interfaces, architecturer des APIs, faire communiquer un front et un back —
-                    c'est ce qui m'a naturellement attiré vers cette option.
+                    {{ optionData.whyText }}
                 </p>
             </div>
 
@@ -50,7 +55,7 @@
             <div class="block block-stat anim" style="--d:100ms">
                 <div class="stat-num">Bac<span class="stat-plus">+2</span></div>
                 <div class="stat-label">niveau diplôme</div>
-                <div class="stat-sub">reconnu par l'état · RNCP niveau 5</div>
+                <div class="stat-sub">RNCP niveau 5</div>
             </div>
 
             <div class="block block-skills anim" style="--d:250ms">
@@ -74,7 +79,7 @@
         <div class="col-right">
 
             <div class="block block-epreuves anim" style="--d:200ms">
-            <div class="block-title">Épreuves</div>
+            <div class="block-title">Matières</div>
             <div class="epreuves-list">
                 <div v-for="(m, i) in matieres" :key="i"
                 class="epreuve-row anim"
@@ -88,7 +93,7 @@
         </div>
 
         <div class="block block-stack anim" style="--d:350ms">
-            <div class="block-title">Ma stack</div>
+            <div class="block-title">Enseignement</div>
             <div class="stack-tags">
                 <span v-for="t in stack" :key="t" class="stack-tag">{{ t }}</span>
             </div>
@@ -107,36 +112,55 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 
 definePageMeta({ layout: 'default' })
 
 const ready = ref(false)
-// Petit délai global avant de lancer le show
+
 onMounted(() => setTimeout(() => { ready.value = true }, 100))
+
+const selectedOption = ref('SLAM')
+
+const optionData = computed(() => {
+  if (selectedOption.value === 'SLAM') {
+    return {
+      desc: "Solutions Logicielles et Applications Métiers — développement web, mobile et logiciel de A à Z.",
+      whyLabel: "Pourquoi SLAM ?",
+      whyText: "Créer des interfaces, architecturer des APIs, faire communiquer un front et un back — c'est ce qui m'a naturellement attiré vers cette option."
+    }
+  } else {
+    return {
+      desc: "Solutions d'Infrastructure, Systèmes et Réseaux — administration systèmes, réseaux et cybersécurité.",
+      whyLabel: "Pourquoi SISR ?",
+      whyText: "Déployer des architectures réseaux, administrer des serveurs et garantir la sécurité du système d'information."
+    }
+  }
+})
 
 const btsSkills = [
   { label: 'Dev web',         desc: 'Full-stack, APIs REST' },
-  { label: 'Bases de données',desc: 'SQL · PostgreSQL' },
-  { label: 'Gestion projet',  desc: 'Agile · cahier des charges' },
-  { label: 'Cybersécurité',   desc: 'Bonnes pratiques' },
-  { label: 'Dev mobile',      desc: 'Applis natives & hybrides' },
-  { label: 'Support',         desc: 'Incidents · maintenance' },
+  { label: 'Bases de données',desc: 'SQL · PostgreSQL · SQLServer · NoSQL' },
+  { label: 'Gestion projet',  desc: 'Méthodologie SCRUM' },
+  { label: 'Cybersécurité',   desc: 'Developper sans faille' },
+  { label: 'Mobile',          desc: 'Applications Natvie' },
+  { label: 'Support',         desc: "Gestion d'incident" },
 ]
 
 const matieres = [
   { name: 'Culture générale',      coef: 3 },
   { name: 'Mathématiques',         coef: 2 },
   { name: 'Anglais',               coef: 2 },
-  { name: 'Support & services',    coef: 4 },
+  { name: 'Support et mise à disposition des services informatiques.',    coef: 4 },
   { name: 'Cybersécurité',         coef: 3 },
   { name: 'Solutions logicielles', coef: 4 },
-  { name: 'Projet E5',             coef: 4 },
-  { name: 'Professionnalisation',  coef: 4 },
+  { name: 'Atelier',  coef: 4 },
+  { name: 'culture économique, juridique et managériale',  coef: 4 },
 ]
 
-const stack = ['Laravel', 'Nuxt', 'Vue.js', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Supabase', 'Docker']
+const stack = ['Laravel', 'React', 'HTML/CSS/JS', 'TypeScript', 'Boostrap', 'PostgreSQL', 'MySQl', 'SQLServer', '.NET', 'Docker', 'NoSql', 'Flutter']
 </script>
 
 <style scoped>
@@ -153,7 +177,6 @@ const stack = ['Laravel', 'Nuxt', 'Vue.js', 'TypeScript', 'Tailwind', 'PostgreSQ
   grid-template-rows: 1fr;
   gap: clamp(10px, 1.2vw, 18px);
   padding: clamp(80px, 10vh, 100px) clamp(16px, 2.5vw, 36px) clamp(16px, 2.5vh, 28px);
-  /* J'AI RETIRÉ LA TRANSITION ICI POUR LAISSER LES ENFANTS S'ANIMER */
 }
 
 .col-left, .col-center, .col-right {
@@ -190,11 +213,9 @@ const stack = ['Laravel', 'Nuxt', 'Vue.js', 'TypeScript', 'Tailwind', 'PostgreSQ
   );
 }
 
-/* --- LE CŒUR DE L'ANIMATION --- */
 .anim {
   opacity: 0;
-  transform: translateY(30px); /* Un peu plus bas pour mieux voir le mouvement */
-  /* On allonge un peu le temps à 0.7s pour un rendu plus luxueux */
+  transform: translateY(30px);
   transition:
     opacity  0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms);
@@ -287,6 +308,7 @@ const stack = ['Laravel', 'Nuxt', 'Vue.js', 'TypeScript', 'Tailwind', 'PostgreSQ
   color: var(--text-primary);
   background: rgba(99,102,241,0.05);
   flex: 1;
+  cursor: pointer;
 }
 .opt-active {
   border-color: rgba(129,140,248,0.35);
@@ -518,7 +540,6 @@ const stack = ['Laravel', 'Nuxt', 'Vue.js', 'TypeScript', 'Tailwind', 'PostgreSQ
   background: rgba(99,102,241,0.3);
 }
 
-/* ── Responsive ── */
 @media (max-width: 1024px) {
   .page-main {
     grid-template-columns: 1fr 1fr;

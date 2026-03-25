@@ -60,6 +60,7 @@ const navLinks = [
   { name: 'BTS',     slug: '/bts'      },
   { name: 'Formations',  slug: '/formations'   },
   { name: 'Expériences', slug: '/experiences'  },
+  { name: 'Veille', slug: '/veille'  },
   { name: 'E5',     slug: '/E5'      },
 ]
 </script>

@@ -3,11 +3,11 @@ POST http://localhost:3000/api/articles
 Content-Type: application/json
 
 {
-    "title": "Les nouveautés de Vue 3.4",
+    "title": "Un article sur Pierrick.",
     "summary": "Vue 3.4 apporte des améliorations significatives sur les performances du compilateur et une nouvelle API de définition des props.",
-    "category": "Laravel",
+    "category": "Pierrick",
     "score": 8,
     "author": "Evan You",
-    "url": "https://blog.vuejs.org/posts/vue-3-444",
+    "url": "https://pierrick.comcdvgcuyds",
     "published_at": "2026-03-20"
 }

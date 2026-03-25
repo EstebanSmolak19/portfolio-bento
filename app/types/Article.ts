@@ -5,8 +5,8 @@ export type Article = {
     url: string,
     summary: string,
     author: string,
-    published_at: Date,
-    fetched_at: Date,
+    published_at: string,
+    fetched_at: string,
     is_read: boolean,
     score: number
 }
