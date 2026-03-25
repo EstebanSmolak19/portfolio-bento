@@ -1,0 +1,13 @@
+### Créer un article
+POST http://localhost:3000/api/articles
+Content-Type: application/json
+
+{
+    "title": "Un article sur Pierrick.",
+    "summary": "Vue 3.4 apporte des améliorations significatives sur les performances du compilateur et une nouvelle API de définition des props.",
+    "category": "Pierrick",
+    "score": 8,
+    "author": "Evan You",
+    "url": "https://pierrick.comcdvgcuyds",
+    "published_at": "2026-03-20"
+}

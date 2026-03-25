@@ -10,8 +10,20 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@iconify/vue": "^5.0.0",
+    "@primeuix/themes": "^2.0.3",
+    "@supabase/supabase-js": "^2.99.2",
+    "@tailwindcss/vite": "^4.2.1",
+    "lottie-web": "^5.13.0",
     "nuxt": "^4.3.1",
+    "nuxt-auth-utils": "^0.5.29",
+    "primevue": "^4.5.4",
+    "tailwindcss": "^4.2.1",
     "vue": "^3.5.28",
-    "vue-router": "^4.6.4"
+    "vue-router": "^4.6.4",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@primevue/nuxt-module": "^4.5.4"
   }
 }
