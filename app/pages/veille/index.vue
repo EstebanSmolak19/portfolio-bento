@@ -13,12 +13,7 @@
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input
-              v-model="searchQuery"
-              type="text"
-              placeholder="Titre, résumé..."
-              class="search-input"
-            />
+            <input v-model="searchQuery" type="text" placeholder="Titre, résumé..." class="search-input" />
           </div>
         </div>
 
@@ -26,54 +21,24 @@
           <span class="section-label">Catégories</span>
           <select v-model.number="selectedCategory" class="category-select">
             <option :value="null">Toutes les catégories</option>
-            <option v-for="cat in availableCategories" :key="cat" :value="cat">
-              Catégorie {{ cat }}
-            </option>
+            <option v-for="cat in availableCategories" :key="cat" :value="cat">Catégorie {{ cat }}</option>
           </select>
         </div>
 
         <div class="sidebar-section">
           <span class="section-label">Score ({{ scoreRange[0] }} - {{ scoreRange[1] }})</span>
           <div class="score-inputs">
-            <input
-              v-model.number="scoreRange[0]"
-              type="number"
-              min="0"
-              max="10"
-              class="score-input"
-            />
+            <input v-model.number="scoreRange[0]" type="number" min="0" max="10" class="score-input" />
             <span class="range-sep">à</span>
-            <input
-              v-model.number="scoreRange[1]"
-              type="number"
-              min="0"
-              max="10"
-              class="score-input"
-            />
+            <input v-model.number="scoreRange[1]" type="number" min="0" max="10" class="score-input" />
           </div>
           <div class="slider-container">
-            <input
-              type="range"
-              v-model.number="scoreRange[0]"
-              min="0"
-              max="10"
-              class="range-slider"
-              @input="ensureRangeOrder"
-            />
-            <input
-              type="range"
-              v-model.number="scoreRange[1]"
-              min="0"
-              max="10"
-              class="range-slider"
-              @input="ensureRangeOrder"
-            />
+            <input type="range" v-model.number="scoreRange[0]" min="0" max="10" class="range-slider" @input="ensureRangeOrder" />
+            <input type="range" v-model.number="scoreRange[1]" min="0" max="10" class="range-slider" @input="ensureRangeOrder" />
           </div>
         </div>
 
-        <button class="reset-btn" @click="resetFilters">
-          Réinitialiser les filtres
-        </button>
+        <button class="reset-btn" @click="resetFilters">Réinitialiser les filtres</button>
       </aside>
 
       <section class="content-area">
@@ -88,12 +53,8 @@
 
           <div class="pagination-controls">
             <span class="page-number">{{ currentPage }}</span>
-            <button class="nav-btn" @click="previousPage" :disabled="currentPage === 1">
-              ‹ Précédent
-            </button>
-            <button class="nav-btn" @click="nextPage" :disabled="currentPage >= totalPages">
-              Suivant ›
-            </button>
+            <button class="nav-btn" @click="previousPage" :disabled="currentPage === 1">‹ Précédent</button>
+            <button class="nav-btn" @click="nextPage" :disabled="currentPage >= totalPages">Suivant ›</button>
           </div>
         </div>
 
@@ -111,9 +72,7 @@
               <circle cx="45" cy="85" r="3"></circle>
             </svg>
             <p>Aucun article correspondant à votre recherche.</p>
-            <button class="reset-btn-outline" @click="resetFilters">
-              Réinitialiser les filtres
-            </button>
+            <button class="reset-btn-outline" @click="resetFilters">Réinitialiser les filtres</button>
           </div>
 
           <div v-else class="articles-grid">
@@ -124,7 +83,6 @@
               :class="{ 'is-read': article.is_read }"
             >
               <div class="card-accent"></div>
-
               <div class="card-content">
                 <div class="card-header">
                   <span class="category-badge">Cat {{ article.category_id }}</span>
@@ -133,17 +91,12 @@
                     <span v-if="article.is_read" class="read-badge">✓ Lu</span>
                   </div>
                 </div>
-
                 <h3 class="card-title">{{ article.title }}</h3>
-
                 <p class="card-summary">{{ article.summary }}</p>
-
                 <div class="card-footer">
                   <div class="article-meta">
                     <span v-if="article.author" class="author">{{ article.author }}</span>
-                    <span v-if="article.score" class="score-badge">
-                      ★ {{ article.score }}/10
-                    </span>
+                    <span v-if="article.score" class="score-badge">★ {{ article.score }}/10</span>
                   </div>
                   <a :href="article.url" target="_blank" rel="noopener noreferrer" class="read-link">
                     Lire
@@ -173,7 +126,7 @@ const selectedCategory = ref<number | null>(null)
 const scoreRange = ref<[number, number]>([0, 10])
 const showUnreadOnly = ref(false)
 const currentPage = ref(1)
-const itemsPerPage = 6
+const itemsPerPage = 4
 
 const { data: articles, execute, loading } = useFetchSupa<Article[]>(() => articleService.getAllAsync())
 
@@ -191,20 +144,15 @@ const availableCategories = computed(() => {
 
 const filteredArticles = computed(() => {
   if (!articles.value) return []
-
   return articles.value
     .filter(article => {
       const matchSearch =
         article.title?.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
         article.summary?.toLowerCase().includes(searchQuery.value.toLowerCase())
-
       const matchCategory = selectedCategory.value === null || article.category_id === selectedCategory.value
-
       const score = article.score || 0
       const matchScore = score >= scoreRange.value[0] && score <= scoreRange.value[1]
-
       const matchUnread = !showUnreadOnly.value || !article.is_read
-
       return matchSearch && matchCategory && matchScore && matchUnread
     })
     .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
@@ -212,13 +160,10 @@ const filteredArticles = computed(() => {
 
 const paginatedArticles = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage
-  const end = start + itemsPerPage
-  return filteredArticles.value.slice(start, end)
+  return filteredArticles.value.slice(start, start + itemsPerPage)
 })
 
-const totalPages = computed(() => {
-  return Math.ceil(filteredArticles.value.length / itemsPerPage) || 1
-})
+const totalPages = computed(() => Math.ceil(filteredArticles.value.length / itemsPerPage) || 1)
 
 const ensureRangeOrder = () => {
   if (scoreRange.value[0] > scoreRange.value[1]) {
@@ -234,26 +179,12 @@ const resetFilters = () => {
   currentPage.value = 1
 }
 
-const previousPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--
-  }
-}
-
-const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++
-  }
-}
+const previousPage = () => { if (currentPage.value > 1) currentPage.value-- }
+const nextPage = () => { if (currentPage.value < totalPages.value) currentPage.value++ }
 
 const formatDate = (dateString: string) => {
   if (!dateString) return ''
-  const date = new Date(dateString)
-  return new Intl.DateTimeFormat('fr-FR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-  }).format(date)
+  return new Intl.DateTimeFormat('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(dateString))
 }
 </script>
 
@@ -266,11 +197,16 @@ const formatDate = (dateString: string) => {
 
 .veille-wrapper {
   width: 100%;
-  padding: 40px 48px;
+  height: 100vh;
+  padding: 72px 48px 40px 48px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .page-header {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  flex-shrink: 0;
 }
 
 .page-title {
@@ -278,7 +214,7 @@ const formatDate = (dateString: string) => {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  margin: 0 0 12px 0;
+  margin: 0;
   color: #ffffff;
 }
 
@@ -286,19 +222,14 @@ const formatDate = (dateString: string) => {
   color: #a5b4fc;
 }
 
-.page-subtitle {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0;
-}
-
 .main-grid {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 48px;
-  max-width: 1600px;
-  margin: 0 auto;
-  width: 100%;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -306,12 +237,11 @@ const formatDate = (dateString: string) => {
   border: 1px solid rgba(99, 102, 241, 0.15);
   border-radius: 12px;
   padding: 28px;
-  height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 28px;
-  position: sticky;
-  top: 120px;
+  overflow-y: auto;
+  max-height: 100%;
 }
 
 .sidebar-section {
@@ -354,10 +284,7 @@ const formatDate = (dateString: string) => {
   transition: all 0.2s;
 }
 
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
+.search-input::placeholder { color: rgba(255, 255, 255, 0.4); }
 .search-input:focus {
   border-color: #818cf8;
   background: rgba(99, 102, 241, 0.05);
@@ -376,19 +303,12 @@ const formatDate = (dateString: string) => {
   transition: all 0.2s;
 }
 
-.category-select:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-}
-
+.category-select:hover { border-color: rgba(99, 102, 241, 0.3); }
 .category-select:focus {
   border-color: #818cf8;
   background: rgba(99, 102, 241, 0.05);
 }
-
-.category-select option {
-  background: #0a0a19;
-  color: white;
-}
+.category-select option { background: #0a0a19; color: white; }
 
 .score-inputs {
   display: flex;
@@ -433,7 +353,7 @@ const formatDate = (dateString: string) => {
   width: 100%;
   height: 6px;
   border-radius: 3px;
-  background: linear-gradient(90deg, rgba(129, 140, 248, 0.2) 0%, rgba(129, 140, 248, 0.2) 100%);
+  background: rgba(129, 140, 248, 0.2);
   outline: none;
   -webkit-appearance: none;
   appearance: none;
@@ -442,13 +362,8 @@ const formatDate = (dateString: string) => {
   transform: translateY(-50%);
 }
 
-.range-slider:nth-child(1) {
-  z-index: 5;
-}
-
-.range-slider:nth-child(2) {
-  z-index: 6;
-}
+.range-slider:nth-child(1) { z-index: 5; }
+.range-slider:nth-child(2) { z-index: 6; }
 
 .range-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -478,33 +393,6 @@ const formatDate = (dateString: string) => {
   transition: all 0.2s;
 }
 
-.range-slider::-moz-range-thumb:hover {
-  background: #4f46e5;
-  border-color: #4f46e5;
-  transform: scale(1.2);
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s;
-}
-
-.checkbox-label:hover {
-  color: #ffffff;
-}
-
-.checkbox-label input {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  accent-color: #818cf8;
-}
-
 .reset-btn {
   background: rgba(99, 102, 241, 0.1);
   border: 1px solid rgba(99, 102, 241, 0.2);
@@ -526,14 +414,18 @@ const formatDate = (dateString: string) => {
 .content-area {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .content-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 12px;
+  flex-shrink: 0;
 }
 
 .article-count {
@@ -545,9 +437,7 @@ const formatDate = (dateString: string) => {
   font-weight: 500;
 }
 
-.article-count svg {
-  color: #818cf8;
-}
+.article-count svg { color: #818cf8; }
 
 .pagination-controls {
   display: flex;
@@ -591,19 +481,32 @@ const formatDate = (dateString: string) => {
 }
 
 .articles-container {
-  min-height: 500px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.articles-container::-webkit-scrollbar { width: 4px; }
+.articles-container::-webkit-scrollbar-track { background: transparent; }
+.articles-container::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 2px;
+}
+.articles-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6);
 }
 
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  padding: 0 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding-bottom: 8px;
 }
 
 .article-card {
   background: rgba(39, 39, 71, 0.725);
-  border: 3px solid rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.15);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -611,6 +514,7 @@ const formatDate = (dateString: string) => {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  min-width: 0;
 }
 
 .article-card:hover {
@@ -620,13 +524,8 @@ const formatDate = (dateString: string) => {
   box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1);
 }
 
-.article-card.is-read {
-  opacity: 0.7;
-}
-
-.article-card.is-read:hover {
-  opacity: 1;
-}
+.article-card.is-read { opacity: 0.7; }
+.article-card.is-read:hover { opacity: 1; }
 
 .card-accent {
   position: absolute;
@@ -642,6 +541,8 @@ const formatDate = (dateString: string) => {
   flex-direction: column;
   gap: 14px;
   padding-top: 4px;
+  min-width: 0;
+  height: 100%;
 }
 
 .card-header {
@@ -669,23 +570,22 @@ const formatDate = (dateString: string) => {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.5);
   text-align: right;
+  flex-shrink: 0;
 }
 
-.date {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.read-badge {
-  color: #818cf8;
-  font-weight: 600;
-}
+.date { color: rgba(255, 255, 255, 0.5); }
+.read-badge { color: #818cf8; font-weight: 600; }
 
 .card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: #ffffff;
   margin: 0;
   line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-summary {
@@ -736,7 +636,6 @@ const formatDate = (dateString: string) => {
 .read-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
   background: rgba(99, 102, 241, 0.1);
   border: 1px solid rgba(99, 102, 241, 0.2);
@@ -746,7 +645,6 @@ const formatDate = (dateString: string) => {
   font-size: 11px;
   font-weight: 600;
   text-decoration: none;
-  cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
   flex-shrink: 0;
@@ -762,7 +660,8 @@ const formatDate = (dateString: string) => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
+  height: 100%;
+  min-height: 300px;
   text-align: center;
   gap: 20px;
   color: rgba(255, 255, 255, 0.7);
@@ -807,60 +706,22 @@ const formatDate = (dateString: string) => {
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
+@keyframes spin { 100% { transform: rotate(360deg); } }
 
 @media (max-width: 1200px) {
-  .main-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .sidebar {
-    position: static;
-  }
-
-  .articles-grid {
-    grid-template-columns: 1fr;
-  }
+  .veille-wrapper { height: auto; overflow: auto; }
+  .main-grid { grid-template-columns: 1fr; gap: 32px; overflow: visible; }
+  .sidebar { max-height: none; }
+  .content-area { height: auto; overflow: visible; }
+  .articles-container { overflow: visible; }
+  .articles-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-  .veille-wrapper {
-    padding: 24px 16px;
-  }
-
-  .page-header {
-    margin-bottom: 32px;
-  }
-
-  .page-title {
-    font-size: 36px;
-  }
-
-  .main-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .content-header {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .pagination-controls {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .articles-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 0;
-  }
+  .veille-wrapper { padding: 24px 16px; }
+  .page-title { font-size: 36px; }
+  .content-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .pagination-controls { width: 100%; justify-content: flex-start; }
+  .articles-grid { gap: 16px; }
 }
 </style>
